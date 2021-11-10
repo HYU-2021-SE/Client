@@ -1,20 +1,17 @@
 import React from 'react';
-import Styled from 'styled-components/native';
-import { Text } from 'react-native';
+import { setCustomText } from 'react-native-global-props';
+import { WelcomeNavigator } from './src/screens/welcome/WelcomeNavigator';
 
 const App = () => {
-  return (
-    <Container>
-      <Text>시작 페이지임</Text>
-    </Container>
-  );
+  setCustomText(customTextProps);
+  return <WelcomeNavigator />;
 };
 
-const Container = Styled.SafeAreaView`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-`;
+const customTextProps = {
+  style: {
+    fontFamily: 'MaruBuri',
+    fontSize: 25,
+  },
+};
 
 export default App;
