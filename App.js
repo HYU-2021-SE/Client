@@ -1,15 +1,10 @@
 import React from 'react';
-import Styled from 'styled-components/native';
 import { setCustomText } from 'react-native-global-props';
-import { Main } from './src/screens/Main';
+import { MainNavigator } from './src/screens/main/MainNavigator';
 
 const App = () => {
   setCustomText(customTextProps);
-  return (
-    <Container>
-      <Main />
-    </Container>
-  );
+  return <MainNavigator />;
 };
 
 const customTextProps = {
@@ -18,14 +13,5 @@ const customTextProps = {
     fontSize: 25,
   },
 };
-
-const Container = Styled.View`
-  flex: 1;
-  flex-direction: column;
-  background-color: #fff;
-  align-items: flex-end;
-  justify-content: center;
-  padding-right: 20px;
-`;
 
 export default App;

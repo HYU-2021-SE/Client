@@ -1,21 +1,25 @@
 import React from 'react';
 import Styled from 'styled-components';
 
-export const Button = (props) => {
+export const RedButton = (props) => {
   return (
-    <View>
+    <Btn>
       <Text>{props.text}</Text>
-    </View>
+    </Btn>
   );
 };
 
-const View = Styled.View`
+const Btn = Styled.View`
   background-color: #a50034;
-  border-radius: 34px 34px 34px 34px;
-  padding: 29px 34px;
+  color: #a50034;
+  padding: 0 34px;
+  borderRadius: 34;
+  max-height: 100;
 `;
 
 const Text = Styled.Text`
   color: #ffffff;
   font-size: 40px;
+  text-align: center;
+  lint-height: 40;
 `;
