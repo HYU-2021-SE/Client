@@ -12,7 +12,7 @@ export const RedButton = (props) => {
 const Btn = Styled.View`
   background-color: #a50034;
   color: #a50034;
-  padding: 0 34px;
+  padding: 8px 34px;
   borderRadius: 34;
   max-height: 100;
 `;
@@ -21,5 +21,5 @@ const Text = Styled.Text`
   color: #ffffff;
   font-size: 40px;
   text-align: center;
-  lint-height: 40;
+  line-height: 40px;
 `;

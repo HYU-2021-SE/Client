@@ -1,11 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
 import Styled from 'styled-components';
 import { RedButton } from '../../components/Button';
 import WineImage from '../../assets/images/mainwine.jpeg';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export const MainScreen = ({ navigation }) => {
+export const WelcomeScreen = ({ navigation }) => {
   return (
     <Container>
       <TextCover>
