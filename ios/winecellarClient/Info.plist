@@ -53,8 +53,7 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>MaruBuri-Regular.otf</string>
-		<string>MaruBuri.otf</string>
+		<string>MARUBuriBetaot-Regular.otf</string>
 	</array>
 </dict>
 </plist>
