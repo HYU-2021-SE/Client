@@ -9,7 +9,7 @@ const App = () => {
 
 const customTextProps = {
   style: {
-    fontFamily: 'MaruBuri',
+    fontFamily: 'MARUBuriBetaot-Regular',
     fontSize: 25,
   },
 };
