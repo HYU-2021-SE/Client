@@ -22,14 +22,20 @@ export const WelcomeScreen = ({ navigation }) => {
   );
 };
 
-export const SelectScreen = () => {
+export const SelectScreen = ({navigation}) => {
   return (
     <SelectorCover>
-      <RedButton text="wine cellar registration" />
-      <RedButton text={'go to \n My Winecellar'} />
+        <TouchableOpacity
+            onPress={() => navigation.navigate('Registrantion')}>
+            <RedButton text="wine cellar registration" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+            <RedButton text={'go to \n My Winecellar'} />
+        </TouchableOpacity>
     </SelectorCover>
   );
 };
+
 
 const Container = Styled.View`
   flex: 1;
