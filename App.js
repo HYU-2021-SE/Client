@@ -1,10 +1,10 @@
 import React from 'react';
 import { setCustomText } from 'react-native-global-props';
-import { WelcomeNavigator } from './src/screens/welcome/WelcomeNavigator';
+import { LockNavigator } from './src/screens/lock/LockNavigator';
 
 const App = () => {
   setCustomText(customTextProps);
-  return <WelcomeNavigator />;
+  return <LockNavigator/>
 };
 
 const customTextProps = {
