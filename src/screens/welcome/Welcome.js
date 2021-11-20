@@ -22,11 +22,13 @@ export const WelcomeScreen = ({ navigation }) => {
   );
 };
 
-export const SelectScreen = () => {
+export const SelectScreen = ({ navigation }) => {
   return (
     <SelectorCover>
       <RedButton text="wine cellar registration" />
-      <RedButton text={'go to \n My Winecellar'} />
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <RedButton text={'go to \n My Winecellar'} />
+      </TouchableOpacity>
     </SelectorCover>
   );
 };
@@ -62,9 +64,8 @@ const Image = Styled.Image`
 `;
 
 const SelectorCover = Styled.View`
+  flex: 1;
   margin: auto;
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
-  height: 100%;
 `;
