@@ -14,7 +14,7 @@ export const WelcomeScreen = ({ navigation }) => {
       </TextCover>
       <Title>DIOnysoS</Title>
       <TouchableOpacity
-        onPress={() => navigation.navigate('SelectScreen')}
+        onPress={() => navigation.navigate('LoginScreen')}
         style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
         <Image source={WineImage} />
       </TouchableOpacity>
