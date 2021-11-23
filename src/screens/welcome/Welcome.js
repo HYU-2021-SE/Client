@@ -32,11 +32,15 @@ export const WelcomeScreen = ({ navigation }) => {
   );
 };
 
-export const SelectScreen = () => {
+export const SelectScreen = ({ navigation }) => {
   return (
     <SelectorCover>
-      <RedButton text="wine cellar registration" />
-      <RedButton text={'go to \n My Winecellar'} />
+      <TouchableOpacity onPress={() => navigation.navigate('Registration')}>
+        <RedButton text="wine cellar registration" />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <RedButton text={'go to \n My Winecellar'} />
+      </TouchableOpacity>
     </SelectorCover>
   );
 };

@@ -14,7 +14,7 @@ const Btn = Styled.View`
   color: #a50034;
   padding: 8px 34px;
   borderRadius: 34;
-  max-height: 100;
+  max-height: 100%;
 `;
 
 const Text = Styled.Text`

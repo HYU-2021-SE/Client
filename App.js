@@ -3,12 +3,12 @@ import { setCustomText } from 'react-native-global-props';
 import { WelcomeNavigator } from './src/screens/welcome/WelcomeNavigator';
 
 const App = () => {
-  setCustomText(customTextProps);
+  setCustomText(customProps);
 
   return <WelcomeNavigator />;
 };
 
-const customTextProps = {
+const customProps = {
   style: {
     fontFamily: 'MARUBuriBetaot-Regular',
     fontSize: 25,
