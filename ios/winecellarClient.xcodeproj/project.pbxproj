@@ -165,6 +165,7 @@
 				01E818D340DEABD31EB5C23E /* Pods-winecellarClient-winecellarClientTests.debug.xcconfig */,
 				D7DA164B875E4F9603667A6E /* Pods-winecellarClient-winecellarClientTests.release.xcconfig */,
 			);
+			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -197,6 +198,7 @@
 				61C538A2CEAB4A76B583005A /* MARUBuriBetaot-Regular.otf */,
 			);
 			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Styled from 'styled-components';
 import { RedButton } from '../../components/Button';
 import WineImage from '../../assets/images/mainwine.jpeg';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { AsyncStorage } from 'react-native';
 
 export const WelcomeScreen = ({ navigation }) => {
+  const [token, setToken] = useState(undefined);
+
+  useEffect(() => {
+    AsyncStorage.getItem('accessToken').then((token) => setToken(token));
+  }, []);
+
+  const navigate = () =>
+    token ? navigation.navigate('SelectScreen') : navigation.navigate('LoginScreen');
+
   return (
     <Container>
       <TextCover>
@@ -14,7 +24,7 @@ export const WelcomeScreen = ({ navigation }) => {
       </TextCover>
       <Title>DIOnysoS</Title>
       <TouchableOpacity
-        onPress={() => navigation.navigate('SelectScreen')}
+        onPress={navigate}
         style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
         <Image source={WineImage} />
       </TouchableOpacity>
@@ -25,7 +35,9 @@ export const WelcomeScreen = ({ navigation }) => {
 export const SelectScreen = ({ navigation }) => {
   return (
     <SelectorCover>
-      <RedButton text="wine cellar registration" />
+      <TouchableOpacity onPress={() => navigation.navigate('Registration')}>
+        <RedButton text="wine cellar registration" />
+      </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <RedButton text={'go to \n My Winecellar'} />
       </TouchableOpacity>
