@@ -4,6 +4,7 @@ import { WelcomeNavigator } from './src/screens/welcome/WelcomeNavigator';
 
 const App = () => {
   setCustomText(customTextProps);
+
   return <WelcomeNavigator />;
 };
 
