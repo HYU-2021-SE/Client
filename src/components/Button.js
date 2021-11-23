@@ -9,23 +9,12 @@ export const RedButton = (props) => {
   );
 };
 
-export const SelectButton = (props) => {
-  return (
-    <Btn>
-      <Text>{props.text}</Text>
-    </Btn>
-  );
-};
 const Btn = Styled.View`
   background-color: #a50034;
   color: #a50034;
   padding: 8px 34px;
   borderRadius: 34;
   max-height: 100%;
-`;
-
-const Reg_Btn = Styled.View`
-    
 `;
 
 const Text = Styled.Text`

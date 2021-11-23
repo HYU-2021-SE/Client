@@ -1,12 +1,12 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Registration } from './Registeration';
+import { Registration } from './Registration';
 import { SelectScreen } from '../welcome/Welcome';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 
 const Stack = createStackNavigator();
 
-export const RegisterationNavigator = () => {
+export const RegistrationNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>

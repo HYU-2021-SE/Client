@@ -32,20 +32,18 @@ export const WelcomeScreen = ({ navigation }) => {
   );
 };
 
-export const SelectScreen = ({navigation}) => {
+export const SelectScreen = ({ navigation }) => {
   return (
     <SelectorCover>
-        <TouchableOpacity
-            onPress={() => navigation.navigate('Registrantion')}>
-            <RedButton text="wine cellar registration" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-            <RedButton text={'go to \n My Winecellar'} />
-        </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Registration')}>
+        <RedButton text="wine cellar registration" />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <RedButton text={'go to \n My Winecellar'} />
+      </TouchableOpacity>
     </SelectorCover>
   );
 };
-
 
 const Container = Styled.View`
   flex: 1;
