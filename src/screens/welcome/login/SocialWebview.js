@@ -1,7 +1,7 @@
 import React from 'react';
 import { WebView } from 'react-native-webview';
 import { SafeAreaView } from 'react-navigation';
-import { setItem } from 'react-native/Libraries/Storage/AsyncStorage';
+import { AsyncStorage } from 'react-native';
 import { userAgent } from '../../../constants/constants';
 
 export const SocialWebview = (props) => {
@@ -13,7 +13,7 @@ export const SocialWebview = (props) => {
     const token = result.accessToken;
     if (token) {
       try {
-        await setItem('accessToken', token);
+        await AsyncStorage.setItem('accessToken', token);
       } catch (e) {
         console.log(e);
       }

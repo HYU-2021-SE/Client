@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { AsyncStorage, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SocialWebviewModal } from './SocialWebviewModal';
 import { apiRequestUrl } from '../../../constants/constants';
 import Styled from 'styled-components';
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
   const [socialModalVisible, setSocialModalVisible] = useState(false);
   const [loginRequestUrl, setLoginRequestUrl] = useState(undefined);
+  const [token, setToken] = useState(undefined);
+
+  useEffect(() => {
+    AsyncStorage.getItem('accessToken').then((token) => setToken(token));
+  }, [socialModalVisible]);
 
   const closeSocialModal = () => {
     setSocialModalVisible(false);
@@ -17,6 +22,8 @@ export const LoginScreen = () => {
     setSocialModalVisible(true);
     setLoginRequestUrl('http://' + apiRequestUrl + '/auth/login');
   };
+
+  const onPress = () => (token ? navigation.navigate('SelectScreen') : login());
 
   return (
     <Container>
@@ -28,7 +35,7 @@ export const LoginScreen = () => {
             closeSocialModal={closeSocialModal}
           />
         ) : null}
-        <TouchableOpacity onPress={login}>
+        <TouchableOpacity onPress={onPress}>
           <Button>Sign up with Kakao</Button>
         </TouchableOpacity>
       </View>
