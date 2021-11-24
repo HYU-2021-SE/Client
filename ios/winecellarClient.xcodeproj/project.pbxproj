@@ -14,7 +14,6 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		BBAE61D64FD8E0684AF9B857 /* libPods-winecellarClient-winecellarClientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 033249A3312D36481EE26DFC /* libPods-winecellarClient-winecellarClientTests.a */; };
 		BF17857EECF94BAAA6C8D3A9 /* MARUBuriBetaot-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 61C538A2CEAB4A76B583005A /* MARUBuriBetaot-Regular.otf */; };
-		C28593C22746A47E0061ECB2 /* src in Resources */ = {isa = PBXBuildFile; fileRef = C28593C12746A47E0061ECB2 /* src */; };
 		F5CE3D8B243F8FB042978956 /* libPods-winecellarClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E7195205D394B8CF02B857 /* libPods-winecellarClient.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +41,22 @@
 		5B8387DAB1EED04EA97898C8 /* Pods-winecellarClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-winecellarClient.release.xcconfig"; path = "Target Support Files/Pods-winecellarClient/Pods-winecellarClient.release.xcconfig"; sourceTree = "<group>"; };
 		61C538A2CEAB4A76B583005A /* MARUBuriBetaot-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "MARUBuriBetaot-Regular.otf"; path = "../src/assets/fonts/MARUBuriBetaot-Regular.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = winecellarClient/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		977DCED627454CCD00AD43D9 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EvilIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		977DCED727454CCD00AD43D9 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Octicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		977DCED827454CCD00AD43D9 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		977DCED927454CCD00AD43D9 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Brands.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		977DCEDA27454CCD00AD43D9 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		977DCEDB27454CCD00AD43D9 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		977DCEDC27454CCD00AD43D9 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Zocial.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		977DCEDD27454CCD00AD43D9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		977DCEDE27454CCD00AD43D9 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Entypo.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		977DCEDF27454CCD00AD43D9 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Fontisto.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		977DCEE027454CCD00AD43D9 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		977DCEE127454CCD00AD43D9 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SimpleLineIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		977DCEE227454CCD00AD43D9 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Regular.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		977DCEE327454CCD00AD43D9 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Foundation.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		977DCEE427454CCD00AD43D9 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Solid.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		977DCEE527454CCD00AD43D9 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		A0E7195205D394B8CF02B857 /* libPods-winecellarClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-winecellarClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64D49C7BD7B5D2E522FB497 /* Pods-winecellarClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-winecellarClient.debug.xcconfig"; path = "Target Support Files/Pods-winecellarClient/Pods-winecellarClient.debug.xcconfig"; sourceTree = "<group>"; };
 		BD5A9FB2C7DA5FD3490C3F69 /* Pods-winecellarClient-winecellarClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-winecellarClient-winecellarClientTests.release.xcconfig"; path = "Target Support Files/Pods-winecellarClient-winecellarClientTests/Pods-winecellarClient-winecellarClientTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +135,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				977DCED527454C8200AD43D9 /* Fonts */,
 				C28593C12746A47E0061ECB2 /* src */,
 				13B07FAE1A68108700A75B9A /* winecellarClient */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -143,6 +159,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		977DCED527454C8200AD43D9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				977DCEE027454CCD00AD43D9 /* AntDesign.ttf */,
+				977DCEDE27454CCD00AD43D9 /* Entypo.ttf */,
+				977DCED627454CCD00AD43D9 /* EvilIcons.ttf */,
+				977DCED827454CCD00AD43D9 /* Feather.ttf */,
+				977DCEDB27454CCD00AD43D9 /* FontAwesome.ttf */,
+				977DCED927454CCD00AD43D9 /* FontAwesome5_Brands.ttf */,
+				977DCEE227454CCD00AD43D9 /* FontAwesome5_Regular.ttf */,
+				977DCEE427454CCD00AD43D9 /* FontAwesome5_Solid.ttf */,
+				977DCEDF27454CCD00AD43D9 /* Fontisto.ttf */,
+				977DCEE327454CCD00AD43D9 /* Foundation.ttf */,
+				977DCEE527454CCD00AD43D9 /* Ionicons.ttf */,
+				977DCEDD27454CCD00AD43D9 /* MaterialCommunityIcons.ttf */,
+				977DCEDA27454CCD00AD43D9 /* MaterialIcons.ttf */,
+				977DCED727454CCD00AD43D9 /* Octicons.ttf */,
+				977DCEE127454CCD00AD43D9 /* SimpleLineIcons.ttf */,
+				977DCEDC27454CCD00AD43D9 /* Zocial.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		A3E6F60060172EA3FE2D1B82 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +190,7 @@
 				E3CAADE94AD5D5930F6CC0C0 /* Pods-winecellarClient-winecellarClientTests.debug.xcconfig */,
 				BD5A9FB2C7DA5FD3490C3F69 /* Pods-winecellarClient-winecellarClientTests.release.xcconfig */,
 			);
+			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -160,6 +200,7 @@
 				61C538A2CEAB4A76B583005A /* MARUBuriBetaot-Regular.otf */,
 			);
 			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,8 +214,8 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				3063FCA90F84E7E57C40E3CB /* [CP] Embed Pods Frameworks */,
-				CB0DC96C482F3EB04B93FC6F /* [CP] Copy Pods Resources */,
+				420700EF68CF0E271B7B5601 /* [CP] Embed Pods Frameworks */,
+				4AEB3CB5F0C1035556E40630 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,7 +300,6 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				BF17857EECF94BAAA6C8D3A9 /* MARUBuriBetaot-Regular.otf in Resources */,
-				C28593C22746A47E0061ECB2 /* src in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +320,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		3063FCA90F84E7E57C40E3CB /* [CP] Embed Pods Frameworks */ = {
+		420700EF68CF0E271B7B5601 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -312,6 +352,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-winecellarClient/Pods-winecellarClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4AEB3CB5F0C1035556E40630 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-winecellarClient-winecellarClientTests/Pods-winecellarClient-winecellarClientTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-winecellarClient-winecellarClientTests/Pods-winecellarClient-winecellarClientTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-winecellarClient-winecellarClientTests/Pods-winecellarClient-winecellarClientTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		70770FB1CC8A984CF41BBD8A /* [CP] Check Pods Manifest.lock */ = {
@@ -351,23 +408,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-winecellarClient/Pods-winecellarClient-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CB0DC96C482F3EB04B93FC6F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-winecellarClient-winecellarClientTests/Pods-winecellarClient-winecellarClientTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-winecellarClient-winecellarClientTests/Pods-winecellarClient-winecellarClientTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-winecellarClient-winecellarClientTests/Pods-winecellarClient-winecellarClientTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D1AD1C7B8EE7A25F263C8FCA /* [CP] Check Pods Manifest.lock */ = {
@@ -576,7 +616,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -642,7 +682,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
