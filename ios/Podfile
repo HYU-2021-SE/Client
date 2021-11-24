@@ -13,6 +13,8 @@ target 'winecellarClient' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'winecellarClientTests' do
     inherit! :complete
     # Pods for testing
