@@ -343,11 +343,44 @@ PODS:
     - React-perflogger (= 0.66.1)
   - RNCAsyncStorage (1.12.1):
     - React-Core
+  - RNCMaskedView (0.2.6):
+    - React-Core
   - RNGestureHandler (1.10.3):
     - React-Core
+  - RNReanimated (2.2.4):
+    - DoubleConversion
+    - FBLazyVector
+    - FBReactNativeSpec
+    - glog
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React
+    - React-callinvoker
+    - React-Core
+    - React-Core/DevSupport
+    - React-Core/RCTWebSocket
+    - React-CoreModules
+    - React-cxxreact
+    - React-jsi
+    - React-jsiexecutor
+    - React-jsinspector
+    - React-RCTActionSheet
+    - React-RCTAnimation
+    - React-RCTBlob
+    - React-RCTImage
+    - React-RCTLinking
+    - React-RCTNetwork
+    - React-RCTSettings
+    - React-RCTText
+    - React-RCTVibration
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNScreens (3.9.0):
     - React-Core
     - React-RCTImage
+  - RNShare (7.3.0):
+    - React-Core
   - RNVectorIcons (9.0.0):
     - React-Core
   - Yoga (1.14.0)
@@ -410,8 +443,11 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
+  - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNShare (from `../node_modules/react-native-share`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -497,10 +533,16 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
+  RNCMaskedView:
+    :path: "../node_modules/@react-native-masked-view/masked-view"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNReanimated:
+    :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNShare:
+    :path: "../node_modules/react-native-share"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   Yoga:
@@ -552,12 +594,15 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 33a949a51bec5f8a3c9e8d8092deb259600d761e
   ReactCommon: 620442811dc6f707b4bf5e3b27d4f19c12d5a821
   RNCAsyncStorage: cb9a623793918c6699586281f0b51cbc38f046f9
+  RNCMaskedView: d367b2a8df3992114e31b32b091a0c00dc800827
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNReanimated: 65583befd5706cc9c86ae9a081786181ced37b93
   RNScreens: 4d79118be80f79fa1f4aa131909a1d6e86280af3
+  RNShare: 3013bd25beed9c5ea93961c0783a44c30ac72e9b
   RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
   Yoga: 2b4a01651f42a32f82e6cef3830a3ba48088237f
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 43906c58e16c5f66276d095bb7e8f296604ce0b1
+PODFILE CHECKSUM: a0edb172a1f9f96bff471cfecbab08eb0072df9a
 
 COCOAPODS: 1.11.2
