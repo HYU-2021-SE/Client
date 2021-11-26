@@ -20,7 +20,7 @@ export const LoginScreen = ({ navigation }) => {
 
   const login = async () => {
     setSocialModalVisible(true);
-    setLoginRequestUrl('http://' + apiRequestUrl + '/auth/login');
+    setLoginRequestUrl(apiRequestUrl + '/auth/login');
   };
 
   const onPress = () => (token ? navigation.navigate('SelectScreen') : login());

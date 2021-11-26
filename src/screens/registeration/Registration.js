@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 import Styled from 'styled-components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Alert, Button, Text } from 'react-native';
+import { Alert, AsyncStorage, Button, Text } from 'react-native';
+import { winecellarApi } from '../../api/winecellarApi';
 
-export const Registration = () => {
+export const Registration = ({ navigation }) => {
   const [serial, onChangeSerial] = useState('');
-  const onClick = () => {
-    if (serial) {
-      Alert.alert(serial);
+  const [winecellar, setWinecellar] = useState(undefined);
+  const onClick = async () => {
+    if (!serial) {
+      return;
     }
-    //todo
-    // 시리얼넘버를 입력값으로 하고, 해당 시리얼넘버가 디비에 있으면
-    // -> 시리얼 넘버와 모델명을 Response.data로 가져옴
-    // 만약에 시리얼넘버가 디비에 없으면
-    // -> 해당 시리얼 넘버는 존재하지 않는다는 알람 띄우고 다시 입력하게 하기
+    const response = await winecellarApi.create(serial);
+    setWinecellar(response.data);
+    console.log(response.data);
+
+    navigation.navigate('Home');
   };
 
   return (
