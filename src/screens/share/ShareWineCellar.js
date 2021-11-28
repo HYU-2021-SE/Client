@@ -7,7 +7,6 @@ export const ShareWineCellar = () => {
     <SafeAreaView>
       <MainText> Share my WineCellar </MainText>
       <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }} />
-      <Image source =  {require('../../assets/images/largeCellar.jpg')}/>
       </SafeAreaView>
       
   );
