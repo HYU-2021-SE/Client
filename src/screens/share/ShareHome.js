@@ -1,6 +1,5 @@
 import React from 'react';
 import Styled from 'styled-components';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView, View, StyleSheet } from 'react-native';
 import { RedButton } from '../../components/Button';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -12,7 +11,9 @@ export const ShareHome = ({navigation}) => {
 <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }} />
 
 <View style = {BView.case1}>
-<TouchableOpacity>
+<TouchableOpacity onPress = {() =>
+  navigation.navigate('ShareWineCellar')}>
+    
 <RedButton text = "Share my WineCellar"/>
 </TouchableOpacity>
 </View>
