@@ -2,7 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 import { RedButton } from '../../components/Button';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { SafeAreaView, View, StyleSheet } from 'react-native';
+import { SafeAreaView, View, StyleSheet, ScrollView} from 'react-native';
 import { Image } from 'react-native';
 
 export const LockScreen = ({ navigation }) => {
