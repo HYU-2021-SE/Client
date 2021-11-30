@@ -4,11 +4,15 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Alert, Button, Text } from 'react-native';
 
-export const Registration = () => {
+export const Registration = ({navigation}) => {
   const [serial, onChangeSerial] = useState('');
   const onClick = () => {
     if (serial) {
-      Alert.alert(serial);
+      Alert.alert("Found Serial Number");
+      navigation.navigate("ModelCheck",{
+        serialNo : serial,
+        modelNo : "LG Delicious wine cellar",
+      });
     }
     //todo
     // 시리얼넘버를 입력값으로 하고, 해당 시리얼넘버가 디비에 있으면
