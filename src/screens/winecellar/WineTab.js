@@ -38,7 +38,7 @@ export const WineTab = () => {
       })}>
       <Tab.Screen name="WineCellar" component={WineCellarStackNavigator} />
       <Tab.Screen name="Lock" component={LockNavigator} />
-      {/* <Tab.Screen name="Registration" component={WineRegisterStackNavigator} /> 와인 추가 기능 */}
+      {/* <Tab.Screen name="WinecellarRegistration" component={WineRegisterStackNavigator} /> 와인 추가 기능 */}
       {/* <Tab.Screen name="Recommendation" component={WineRecommendationStackNavigator} /> Wine Recommend 기능 */}
       <Tab.Screen name="Share" component={ShareNavigator} />
     </Tab.Navigator>
