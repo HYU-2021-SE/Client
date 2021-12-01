@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Alert, Button, Text } from 'react-native';
 
-export const Registration = ({ navigation }) => {
+export const WinecellarRegistration = ({ navigation }) => {
   const [serial, onChangeSerial] = useState('');
   const onClick = () => {
     if (serial) {

@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { WelcomeScreen, SelectScreen } from './Welcome';
 import { LoginScreen } from './login/Login';
 import React from 'react';
-import {RegistrationNavigator} from '../registeration/RegistrationNavigator';
+import { RegistrationNavigator } from '../winecellarRegisteration/RegistrationNavigator';
 
 const Stack = createStackNavigator();
 

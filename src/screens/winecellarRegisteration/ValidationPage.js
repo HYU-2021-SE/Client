@@ -12,13 +12,13 @@ export const ValidationPage = ({ route, navigation }) => {
     //여기서 메인 페이지로 넘어가는 네비게이션으로 이동하면 될듯.
   };
   const retry = () => {
-    navigation.navigate('Registration');
+    navigation.navigate('WinecellarRegistration');
   };
   return (
     <Container>
       <KeyboardAwareScrollView>
         <TextCover>
-          <DisplayText>{'Wine Cellar\nRegistration'}</DisplayText>
+          <DisplayText>{'Wine Cellar\nWinecellarRegistration'}</DisplayText>
         </TextCover>
         <SerialConfirmCover>
           <Text
