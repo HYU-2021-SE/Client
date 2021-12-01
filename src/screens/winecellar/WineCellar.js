@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import inMyWineCellar from '../../assets/data/inMyWineCellar';
 import colors from '../../assets/colors/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -13,12 +13,22 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {
+  useWinecellarDispatch,
+  useWinecellarState,
+  WinecellarDispatch,
+  WinecellarState,
+} from '../../context/WinecellarContext';
 
 const { height, width } = Dimensions.get('window');
 
 export const MyWineCellar = ({ navigation }) => {
-  const [wineCellar, setWineCellar] = useState(inMyWineCellar[0]);
+  const state = useWinecellarState();
+  const dispatch = useWinecellarDispatch();
+  const [wineCellar, setWineCellar] = useState(inMyWineCellar);
   const [wine, setWine] = useState([]);
+
+  console.log(state);
 
   const RenderWineImage = ({ item }) => {
     return (

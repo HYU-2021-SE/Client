@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView, View, StyleSheet } from 'react-native';
 import { Image } from 'react-native';
 
-export const LockScreen = ({ navigation }) => {
+export const LockScreen = () => {
   return (
     <SafeAreaView>
       <MainText> WineCellar Lock</MainText>

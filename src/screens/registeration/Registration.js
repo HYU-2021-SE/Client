@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Styled from 'styled-components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Alert, AsyncStorage, Button, Text } from 'react-native';
+import { Button, Text } from 'react-native';
 import { winecellarApi } from '../../api/winecellarApi';
 
 export const Registration = ({ navigation }) => {

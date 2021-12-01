@@ -2,15 +2,9 @@ import { apiRequestUrl } from '../constants/constants';
 import axios from 'axios';
 import { AsyncStorage } from 'react-native';
 import { AxiosResponse } from 'axios';
+import { Wine } from '../context/WinecellarContext';
 
 const winecellarInstance = axios.create({ baseURL: apiRequestUrl + '/winecellar' });
-
-export class Wine {
-  wineId;
-  wineName;
-  location;
-  labelImage;
-}
 
 export class WinecellarResponse {
   winecellarId;
@@ -25,7 +19,6 @@ export class WinecellarResponse {
 export const winecellarApi = {
   async create(serial): Promise<AxiosResponse<WinecellarResponse>> {
     const token = await AsyncStorage.getItem('accessToken');
-    console.log(token);
     return winecellarInstance.post(
       '/',
       { serialNo: serial },
@@ -35,5 +28,13 @@ export const winecellarApi = {
         },
       },
     );
+  },
+  async get(): Promise<AxiosResponse<WinecellarResponse>> {
+    const token = await AsyncStorage.getItem('accessToken');
+    return winecellarInstance.get('/', {
+      headers: {
+        authorization: token,
+      },
+    });
   },
 };
