@@ -38,5 +38,12 @@
 		<string>Octicons.ttf</string>
 		<string>Zocial.ttf</string>
 	</array>
+	<array>
+	    <string>mailto</string>
+	    <string>fb</string>
+	    <string>twitter</string>
+	    <string>instagram</string>
+	    <string>instagram-stories</string>
+	</array>
 </dict>
 </plist>

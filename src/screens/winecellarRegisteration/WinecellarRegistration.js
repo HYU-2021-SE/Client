@@ -3,19 +3,16 @@ import Styled from 'styled-components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Button, Text } from 'react-native';
-import { winecellarApi } from '../../api/winecellarApi';
 
-export const Registration = ({ navigation }) => {
+export const WinecellarRegistration = ({ navigation }) => {
   const [serial, onChangeSerial] = useState('');
-  const [winecellar, setWinecellar] = useState(undefined);
-  const onClick = async () => {
-    if (!serial) {
-      return;
+  const onClick = () => {
+    if (serial) {
+      navigation.navigate('ValidationPage', {
+        serialNo: serial,
+        modelNo: 'LG Delicious wine cellar',
+      });
     }
-    const response = await winecellarApi.create(serial);
-    setWinecellar(response.data);
-
-    navigation.navigate('Home');
   };
 
   return (
