@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { WineCellarStackNavigator } from './WineCellarNavigator';
 import { LockNavigator } from '../lock/LockNavigator';
-import { InstagramShare } from '../share/InstagramShare';
+import { ShareNavigator } from '../share/ShareNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,7 +40,7 @@ export const WineTab = () => {
       <Tab.Screen name="Lock" component={LockNavigator} />
       {/* <Tab.Screen name="Registration" component={WineRegisterStackNavigator} /> 와인 추가 기능 */}
       {/* <Tab.Screen name="Recommendation" component={WineRecommendationStackNavigator} /> Wine Recommend 기능 */}
-      <Tab.Screen name="Share" component={InstagramShare} />
+      <Tab.Screen name="Share" component={ShareNavigator} />
     </Tab.Navigator>
   );
 };
