@@ -6,6 +6,14 @@ import { Wine } from '../context/WinecellarContext';
 
 const winecellarInstance = axios.create({ baseURL: apiRequestUrl + '/winecellar' });
 
+export class WinecellarUpdateRequest {
+  winecellarId;
+  nickName;
+  lock;
+  lockPassword;
+  lightColor;
+}
+
 export class WinecellarResponse {
   winecellarId;
   type;
@@ -36,5 +44,17 @@ export const winecellarApi = {
         authorization: token,
       },
     });
+  },
+  async update(dto: WinecellarUpdateRequest): Promise<AxiosResponse<WinecellarResponse>> {
+    const token = await AsyncStorage.getItem('accessToken');
+    return winecellarInstance.put(
+      '/',
+      { dto },
+      {
+        headers: {
+          authorization: token,
+        },
+      },
+    );
   },
 };
