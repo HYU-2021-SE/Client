@@ -1,9 +1,8 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import inMyWineCellar from '../../assets/data/inMyWineCellar';
 import colors from '../../assets/colors/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
-  Dimensions,
   FlatList,
   Image,
   SafeAreaView,
@@ -13,41 +12,51 @@ import {
   TouchableOpacity,
   View,
   Platform,
-  Linking
+  Linking,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Share from 'react-native-share'
-import {captureRef} from 'react-native-view-shot'
+import Share from 'react-native-share';
+import { captureRef } from 'react-native-view-shot';
 
 export const MyWineCellar = ({ navigation }) => {
   const [wineCellar, setWineCellar] = useState(inMyWineCellar[0]);
   const [wine, setWine] = useState([]);
-
   const viewRef = useRef();
   const [showInstagramStory, setShowInstagramStory] = useState(false);
-  useEffect(() => {
+
+  const setOsConfig = async () => {
     if (Platform.OS === 'ios') {
-      Linking.canOpenURL('instagram://').then((val) => setShowInstagramStory(val).catch(err))
+      Linking.canOpenURL('instagram://')
+        .then((res) => (res ? setShowInstagramStory(true) : setShowInstagramStory(false)))
+        .catch(() => setShowInstagramStory(false));
+    } else {
+      Share.isPackageInstalled('com.instagram.android')
+        .then(({ isInstalled }) => setShowInstagramStory(isInstalled))
+        .catch((err) => console.error(err));
     }
-    else {Share.isPackageInstalled('com.instagram.android').then(({isInstalled}) => setShowInstagramStory(val).catch(err))
-    }
-  }, [])
+  };
+
   const ShareImages = async () => {
+    await setOsConfig();
     try {
-      const uri = await captureRef(viewRef, {format: 'png', quality : 0.7, });
+      const uri = await captureRef(viewRef, { format: 'png', quality: 0.7 });
       if (showInstagramStory) {
-        await Share.shareSingle({stickerImage: uri, method: Share.InstagramStories.SHARE_STICKER_IMAGE, 
-        social: Share.Social.INSTAGRAM_STORIES, backgroundBottomColor: 'white', 
-      backgroundTopColor: 'white'})
+        await Share.shareSingle({
+          stickerImage: uri,
+          method: Share.InstagramStories.SHARE_STICKER_IMAGE,
+          social: Share.Social.INSTAGRAM_STORIES,
+          backgroundBottomColor: 'white',
+          backgroundTopColor: 'white',
+        });
+      } else {
+        Share.open({ url: uri })
+          .then((res) => console.log(res))
+          .catch();
       }
-      else {
-        await Share.open({url: uri});
-      }
+    } catch (err) {
+      console.error(err);
     }
-    catch(err) {
-    console.error(err);
-  }
-  }
+  };
   const RenderWineImage = ({ item }) => {
     return (
       <View style={styles.wineWrapper}>
@@ -59,7 +68,7 @@ export const MyWineCellar = ({ navigation }) => {
     );
   };
   return (
-    <SafeAreaView style={styles.container} ref = {viewRef}>
+    <SafeAreaView style={styles.container} ref={viewRef}>
       {/* 헤더 (와인셀러) */}
       <View style={styles.header}>
         <Text style={styles.headerText}>My WineCellar</Text>
@@ -72,11 +81,9 @@ export const MyWineCellar = ({ navigation }) => {
           }>
           <MaterialCommunityIcons name="set-all" size={30} />
         </TouchableOpacity>
-        <TouchableOpacity onPress = {ShareImages}>
-          <Text style = {styles.share}>
-          {showInstagramStory ? 'Share Instagram Story' : 'Share'}
-          </Text>
-        <Ionicons name="share-social-outline" size={30} />
+        <TouchableOpacity onPress={ShareImages}>
+          <Text style={styles.share}>{showInstagramStory ? 'Share Instagram Story' : 'Share'}</Text>
+          <Ionicons name="share-social-outline" size={30} />
         </TouchableOpacity>
       </View>
 
@@ -105,7 +112,7 @@ export const MyWineCellar = ({ navigation }) => {
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -168,5 +175,5 @@ const styles = StyleSheet.create({
   },
   share: {
     fontSize: 10,
-  }
+  },
 });
