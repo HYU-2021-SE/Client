@@ -1,21 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Styled from 'styled-components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Alert, Button, Text } from 'react-native';
-import {userAgent} from '../../constants/constants';
 
-export const ModelCheck = ({route, navigation}) => {
-  const {serialNo} = route.params;
-  const {modelNo} = route.params;
-  const okay = () =>{
-    Alert.alert("okay 버튼 눌러짐");
+export const ValidationPage = ({ route, navigation }) => {
+  const { serialNo } = route.params;
+  const { modelNo } = route.params;
+  const okay = () => {
+    Alert.alert('okay 버튼 눌러짐');
     //여기서 메인 페이지로 넘어가는 네비게이션으로 이동하면 될듯.
-
-  }
-  const retry = () =>{
+  };
+  const retry = () => {
     navigation.navigate('Registration');
-  }
+  };
   return (
     <Container>
       <KeyboardAwareScrollView>
@@ -35,7 +33,7 @@ export const ModelCheck = ({route, navigation}) => {
             <Text
               style={{
                 textAlign: 'center',
-                margin: 'auto,'
+                margin: 'auto,',
               }}>
               {serialNo}
             </Text>
@@ -45,14 +43,14 @@ export const ModelCheck = ({route, navigation}) => {
             <Text
               style={{
                 textAlign: 'center',
-                margin: 'auto,'
+                margin: 'auto,',
               }}>
               {modelNo}
             </Text>
           </ConfirmCover>
         </SerialConfirmCover>
         <ButtonContainer>
-          <TouchableOpacity onPress = {okay}>
+          <TouchableOpacity onPress={okay}>
             <Button color={'#b52f59'} title="Okay" />
           </TouchableOpacity>
           <TouchableOpacity onPress={retry}>
@@ -61,7 +59,6 @@ export const ModelCheck = ({route, navigation}) => {
         </ButtonContainer>
       </KeyboardAwareScrollView>
     </Container>
-
   );
 };
 
@@ -111,5 +108,3 @@ const ButtonContainer = Styled.View`
    justify-content: center;
    align-items: center;
 `;
-
-

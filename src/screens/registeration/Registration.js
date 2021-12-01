@@ -4,14 +4,14 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Alert, Button, Text } from 'react-native';
 
-export const Registration = ({navigation}) => {
+export const Registration = ({ navigation }) => {
   const [serial, onChangeSerial] = useState('');
   const onClick = () => {
     if (serial) {
-      Alert.alert("Found Serial Number");
-      navigation.navigate("ModelCheck",{
-        serialNo : serial,
-        modelNo : "LG Delicious wine cellar",
+      Alert.alert('Found Serial Number');
+      navigation.navigate('ValidationPage', {
+        serialNo: serial,
+        modelNo: 'LG Delicious wine cellar',
       });
     }
     //todo
