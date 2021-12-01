@@ -7,7 +7,6 @@ import {
   StyleSheet
 } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import LockScreen from './CellarLock';
 
 
 class Inputs extends Component {
@@ -21,7 +20,7 @@ class Inputs extends Component {
  
  
   login = (pass) => {
-    alert("Your Lock Password :" + pass);
+    alert("Your Lock Password Saved:" + pass);
   };
  
   render() {
@@ -43,7 +42,8 @@ class Inputs extends Component {
           <Text style={styles.submitButtonText}>Save</Text>
         </TouchableOpacity> 
         <View style = {styles.icon}>
-        <TouchableOpacity onPress={() => navigation.navigate('CellarLock')}>
+        <TouchableOpacity onPress = {() => 
+          navigation.navigate('Lock Screen')}> 
         <Ionicons name="arrow-back-outline" size={25} color = "#707070"/>
         </TouchableOpacity>
         <Text style = {styles.textt}>Back to Lock Main</Text>

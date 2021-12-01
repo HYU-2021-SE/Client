@@ -25,11 +25,15 @@ export const ShareHome = ({navigation}) => {
 </View>
 
 <View style = {BView.case3}>
-<TouchableOpacity>
+<TouchableOpacity onPress = {() => 
+  navigation.navigate('MyWineTopsterMain')}>
+
 <RedButton text = "Make my Wine Topster"/>
 </TouchableOpacity>
 </View>
-</SafeAreaView>);
+
+</SafeAreaView>
+);
 };
 
 const MainText = Styled.Text`
