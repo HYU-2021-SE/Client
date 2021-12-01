@@ -1,4 +1,28 @@
 import React, { createContext, useContext, useReducer } from 'react';
+import { mergeDeepRight } from 'rambda';
+
+const WinecellarType = {
+  W8: {
+    floor: 1,
+    max: 8,
+  },
+  W43: {
+    floor: 1,
+    max: 43,
+  },
+  W75: {
+    floor: 2,
+    max: 75,
+  },
+  W85: {
+    floor: 2,
+    max: 85,
+  },
+  W89: {
+    floor: 2,
+    max: 89,
+  },
+};
 
 export class Wine {
   wineId;
@@ -19,10 +43,19 @@ const initialState = {
 
 const winecellarReducer = (state, action) => {
   switch (action.type) {
-    case 'GET_WINECELLAR':
-      return state;
+    case 'GET_WINECELLAR': {
+      return mergeDeepRight(state, {
+        nickName: action.data.nickName ?? '',
+        lock: action.data.lock,
+        lockPassword: action.data.lockPassword ?? '',
+        lightColor: action.data.lightColor,
+        type: WinecellarType[action.data.type],
+        wines: action.data.wineDtos,
+        winecellarId: action.data.winecellarId,
+      });
+    }
     case 'UPDATE_WINECELLAR':
-      return {};
+      return state;
     default:
       return state;
   }
@@ -47,5 +80,3 @@ export const WinecellarProvider = ({ children }) => {
     </WinecellarState.Provider>
   );
 };
-
-// export const WinecellarDispatch = React.createContext(null);

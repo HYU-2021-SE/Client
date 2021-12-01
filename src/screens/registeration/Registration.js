@@ -14,7 +14,6 @@ export const Registration = ({ navigation }) => {
     }
     const response = await winecellarApi.create(serial);
     setWinecellar(response.data);
-    console.log(response.data);
 
     navigation.navigate('Home');
   };
