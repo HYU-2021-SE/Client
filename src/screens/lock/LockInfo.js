@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useState } from 'react/cjs/react.production.min';
 
 export const LockInfo = ({ navigation }) => {
   const [password, setPassword] = useState('');
@@ -10,8 +9,8 @@ export const LockInfo = ({ navigation }) => {
     setPassword(text);
   };
 
-  const login = (pw) => {
-    Alert.alert('Your Lock Password Saved:' + pw);
+  const login = () => {
+    Alert.alert('Your Lock Password Saved:' + password);
   };
 
   return (
@@ -25,11 +24,11 @@ export const LockInfo = ({ navigation }) => {
         autoCapitalize="none"
         onChangeText={onChangePassword}
       />
-      <TouchableOpacity style={styles.submitButton} onPress={() => login(password)}>
+      <TouchableOpacity style={styles.submitButton} onPress={login}>
         <Text style={styles.submitButtonText}>Save</Text>
       </TouchableOpacity>
       <View style={styles.icon}>
-        <TouchableOpacity onPress={() => navigation.navigate('Lock Screen')}>
+        <TouchableOpacity onPress={() => navigation.navigate('LockScreen')}>
           <Ionicons name="arrow-back-outline" size={25} color="#707070" />
         </TouchableOpacity>
         <Text style={styles.text}>Back to Lock Main</Text>

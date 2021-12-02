@@ -9,9 +9,9 @@ const Stack = createStackNavigator();
 export const LockNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Lock Info" component={LockInfo} />
-      <Stack.Screen name="Lock Screen" component={LockScreen} />
-      <Stack.Screen name="Lock App" component={LockApp} />
+      <Stack.Screen name="LockInfo" component={LockInfo} />
+      <Stack.Screen name="LockScreen" component={LockScreen} />
+      <Stack.Screen name="LockApp" component={LockApp} />
     </Stack.Navigator>
   );
 };
