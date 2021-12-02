@@ -1,8 +1,8 @@
-import React from "react";
-import Inputs from "./LockInfo";
- 
+import React from 'react';
+import { LockInfo } from './LockInfo';
+
 const LockApp = () => {
-  return <Inputs />;
+  return <LockInfo />;
 };
- 
+
 export default LockApp;
