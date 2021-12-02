@@ -93,7 +93,7 @@ export const MyWineCellar = ({ navigation }) => {
         <TouchableOpacity
           onPress={() =>
             navigation.navigate('MyWineCellar Setting', {
-              nickName: winecellar.nickname ? winecellar.nickname : winecellar.type,
+              nickName: winecellar.nickName ? winecellar.nickName : winecellar.type,
               floor,
             })
           }>
