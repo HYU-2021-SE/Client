@@ -6,21 +6,23 @@ import { Alert, Button, Text } from 'react-native';
 import { winecellarApi } from '../../api/winecellarApi';
 
 export const ValidationPage = ({ route, navigation }) => {
-  const { serialNo } = route.params;
-  const { modelNo } = route.params;
-  const okay = async () => {
+  const okay = () => {
     if (!serialNo) {
       return;
     }
     winecellarApi
       .create(serialNo)
-      .then(() => navigation.navigate('Home'))
-      .catch(() => {
-        Alert('유효하지 않은 번호입니다.');
-        retry();
+      .then(() => {
+        navigation.navigate('Home');
+      })
+      .catch((err) => {
+        console.log(err);
+        Alert.alert('유효하지 않은 번호입니다.');
+        navigation.navigate('WinecellarRegistration');
       });
   };
-
+  const { serialNo } = route.params;
+  const { modelNo } = route.params;
   const retry = () => {
     navigation.navigate('WinecellarRegistration');
   };
@@ -44,7 +46,7 @@ export const ValidationPage = ({ route, navigation }) => {
             <Text
               style={{
                 textAlign: 'center',
-                margin: 'auto,',
+                margin: 'auto',
               }}>
               {serialNo}
             </Text>
@@ -54,7 +56,7 @@ export const ValidationPage = ({ route, navigation }) => {
             <Text
               style={{
                 textAlign: 'center',
-                margin: 'auto,',
+                margin: 'auto',
               }}>
               {modelNo}
             </Text>
