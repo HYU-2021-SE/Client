@@ -38,6 +38,8 @@ const initialState = {
   lock: false,
   lockPassword: '',
   lightColor: undefined,
+  temperature: 15,
+  humidity: 75,
   wines: [],
 };
 
@@ -52,10 +54,20 @@ const winecellarReducer = (state, action) => {
         type: WinecellarType[action.data.type],
         wines: action.data.wineDtos,
         winecellarId: action.data.winecellarId,
+        temperature: action.data.temperature ?? 15,
+        humidity: action.data.humidity ?? 75,
       });
     }
     case 'UPDATE_WINECELLAR':
-      return state;
+      return mergeDeepRight(state, {
+        ...state,
+        nickName: action.data.nickName,
+        lock: action.data.lock,
+        lockPassword: action.data.lockPassword,
+        lightColor: action.data.lightColor,
+        temperature: action.data.temperature,
+        humidity: action.data.humidity,
+      });
     default:
       return state;
   }

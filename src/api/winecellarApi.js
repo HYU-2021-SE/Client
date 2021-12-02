@@ -12,6 +12,8 @@ export class WinecellarUpdateRequest {
   lock;
   lockPassword;
   lightColor;
+  temperature;
+  humidity;
 }
 
 export class WinecellarResponse {
@@ -21,6 +23,8 @@ export class WinecellarResponse {
   lock;
   lockPassword;
   lightColor;
+  temperature;
+  humidity;
   wineDtos: Array<Wine>;
 }
 
@@ -49,7 +53,7 @@ export const winecellarApi = {
     const token = await AsyncStorage.getItem('accessToken');
     return winecellarInstance.put(
       '/',
-      { dto },
+      { ...dto },
       {
         headers: {
           authorization: token,
