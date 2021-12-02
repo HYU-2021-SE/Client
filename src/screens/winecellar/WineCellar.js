@@ -1,12 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
-import inMyWineCellar from '../../assets/data/inMyWineCellar';
+import React, { useState, useEffect, useRef } from 'react';
 import colors from '../../assets/colors/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   FlatList,
   Image,
   SafeAreaView,
-  SectionList,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -14,15 +12,33 @@ import {
   Platform,
   Linking,
 } from 'react-native';
+import { useWinecellarDispatch, useWinecellarState } from '../../context/WinecellarContext';
+import { winecellarApi } from '../../api/winecellarApi';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Share from 'react-native-share';
 import { captureRef } from 'react-native-view-shot';
 
 export const MyWineCellar = ({ navigation }) => {
-  const [wineCellar, setWineCellar] = useState(inMyWineCellar[0]);
-  const [wine, setWine] = useState([]);
   const viewRef = useRef();
   const [showInstagramStory, setShowInstagramStory] = useState(false);
+  const state = useWinecellarState();
+  const dispatch = useWinecellarDispatch();
+
+  const [winecellar, setWinecellar] = useState(state);
+  const fetch = async () => {
+    const newWinecellar = await winecellarApi.get();
+    dispatch({ type: 'GET_WINECELLAR', data: newWinecellar.data });
+  };
+
+  useEffect(() => {
+    fetch();
+  }, []);
+
+  useEffect(() => {
+    
+    setWinecellar(state);
+  }, [state]);
+  const floor = winecellar.type ? winecellar.type.floor : 1;
 
   const setOsConfig = async () => {
     if (Platform.OS === 'ios') {
@@ -57,6 +73,7 @@ export const MyWineCellar = ({ navigation }) => {
       console.error(err);
     }
   };
+
   const RenderWineImage = ({ item }) => {
     return (
       <View style={styles.wineWrapper}>
@@ -67,6 +84,7 @@ export const MyWineCellar = ({ navigation }) => {
       </View>
     );
   };
+
   return (
     <SafeAreaView style={styles.container} ref={viewRef}>
       {/* 헤더 (와인셀러) */}
@@ -75,8 +93,8 @@ export const MyWineCellar = ({ navigation }) => {
         <TouchableOpacity
           onPress={() =>
             navigation.navigate('MyWineCellar Setting', {
-              nickName: wineCellar.nickname,
-              floor: wineCellar.floor,
+              nickName: winecellar.nickName ? winecellar.nickName : winecellar.type,
+              floor,
             })
           }>
           <MaterialCommunityIcons name="set-all" size={30} />
@@ -89,26 +107,21 @@ export const MyWineCellar = ({ navigation }) => {
 
       {/* 와인 선반 */}
       <View style={styles.wineListWrapper}>
-        <SectionList
-          contentContainerStyle={styles.wineList}
-          sections={wineCellar.floor}
-          renderSectionHeader={({ section }) => (
-            <View>
-              <View style={styles.wineListHeader}>
-                <Text style={styles.wineListHeaderText}>{section.title}</Text>
-              </View>
+        {Array.from({ length: floor }, (v, i) => i).map((index) => (
+          <View key={index} contentContainerStyle={styles.wineList}>
+            <View style={styles.wineListHeader}>
+              <Text style={styles.wineListHeaderText}>Floor {index + 1}</Text>
+            </View>
+            {winecellar.wines ? (
               <FlatList
                 horizontal
-                data={section.data}
+                data={winecellar.wines.map((wine) => wine.location === index + 1)}
                 renderItem={({ item }) => <RenderWineImage item={item} />}
                 showsHorizontalScrollIndicator={false}
               />
-            </View>
-          )}
-          renderItem={({ item, section }) => {
-            return null;
-          }}
-        />
+            ) : null}
+          </View>
+        ))}
       </View>
     </SafeAreaView>
   );
@@ -172,8 +185,5 @@ const styles = StyleSheet.create({
   wineName: {
     fontSize: 15,
     padding: 2,
-  },
-  share: {
-    fontSize: 10,
   },
 });

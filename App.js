@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { WelcomeNavigator } from './src/screens/welcome/WelcomeNavigator';
 import { WineTab } from './src/screens/winecellar/WineTab';
+import { RegistrationNavigator } from './src/screens/winecellarRegisteration/RegistrationNavigator';
 
 const Stack = createStackNavigator();
 
@@ -13,6 +14,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Welcome" component={WelcomeNavigator} />
+        <Stack.Screen name="Registration" component={RegistrationNavigator} />
         <Stack.Screen name="Home" component={WineTab} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -13,7 +13,7 @@ export const SocialWebview = (props) => {
     const token = result.accessToken;
     if (token) {
       try {
-        await AsyncStorage.setItem('accessToken', token);
+        await AsyncStorage.setItem('accessToken', `bearer ${token}`);
       } catch (e) {
         console.log(e);
       }
