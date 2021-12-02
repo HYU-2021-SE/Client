@@ -35,7 +35,7 @@ export const MyWineCellar = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
-    console.log(state);
+    
     setWinecellar(state);
   }, [state]);
   const floor = winecellar.type ? winecellar.type.floor : 1;
