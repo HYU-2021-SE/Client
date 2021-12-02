@@ -1,39 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import colors from '../../assets/colors/colors';
-import {
-  Dimensions,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useWinecellarDispatch, useWinecellarState } from '../../context/WinecellarContext';
+import { RedButton } from '../../components/Button';
+import Styled from 'styled-components';
+import { winecellarApi } from '../../api/winecellarApi';
 
-const { height, width } = Dimensions.get('window');
+export const MyWineCellarSetting = () => {
+  const state = useWinecellarState();
+  const dispatch = useWinecellarDispatch();
+  const [winecellar, setWinecellar] = useState(state);
 
-export const MyWineCellarSetting = ({ navigation, route }) => {
-  const [nickName, setNickName] = useState('');
-  const floor = route.params.floor;
+  const [nickName, setNickName] = useState(winecellar.nickName);
+  const [humidity, setHumidity] = useState(winecellar.humidity);
+  const [temperature, setTemperature] = useState(winecellar.temperature);
 
-  const onChangeText = (text) => {
+  const update = async () => {
+    const dto = {
+      winecellarId: winecellar.winecellarId,
+      lock: winecellar.lock,
+      lockPassword: winecellar.lockPassword,
+      lightColor: winecellar.lightColor,
+      nickName,
+      humidity,
+      temperature,
+    };
+    await winecellarApi.update({ ...dto });
+    dispatch({ type: 'UPDATE_WINECELLAR', data: dto });
+  };
+
+  const onChangeNickName = (text) => {
     setNickName(text);
   };
 
-  useEffect(() => {
-    setNickName(route.params.nickName);
-  }, [route.params.nickName]);
+  const onIncreasesHumidity = () => {
+    let newHumidity = humidity + 1;
+    if (humidity >= 90) {
+      newHumidity = humidity;
+    }
+    setHumidity(newHumidity);
+  };
 
-  const renderItem = ({ item }) => (
-    <View style={styles.temperatureFloor}>
-      <Text>{item.title}</Text>
-      <TouchableOpacity>
-        <MaterialCommunityIcons name={'chevron-right'} size={30} color={colors.grey} />
-      </TouchableOpacity>
-    </View>
-  );
+  const onDecreaseHumidity = () => {
+    let newHumidity = humidity - 1;
+    if (humidity <= 30) {
+      newHumidity = humidity;
+    }
+    setHumidity(newHumidity);
+  };
+
+  const onIncreasesTemperature = () => {
+    let newTemperature = temperature + 1;
+    if (temperature >= 30) {
+      newTemperature = temperature;
+    }
+    setTemperature(newTemperature);
+  };
+
+  const onDecreaseTemperature = () => {
+    let newTemperature = temperature - 1;
+    if (temperature <= 5) {
+      newTemperature = temperature;
+    }
+    setTemperature(newTemperature);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -41,10 +72,11 @@ export const MyWineCellarSetting = ({ navigation, route }) => {
         <Text style={styles.headerText}>WineCellar Setting</Text>
       </View>
       <View style={styles.inputWrapper}>
+        <Text style={{ ...styles.headerText, fontSize: 25 }}>Nickname</Text>
         <TextInput
-          placeholder="Nickname"
+          placeholder={nickName}
           style={styles.input}
-          onChangeText={onChangeText}
+          onChangeText={onChangeNickName}
           value={nickName}
           returnKeyType="send" // 확인용
         />
@@ -55,7 +87,14 @@ export const MyWineCellarSetting = ({ navigation, route }) => {
           <Text style={{ ...styles.headerText, fontSize: 25 }}>Temperature Control</Text>
         </View>
         <View style={styles.temperature}>
-          <FlatList data={floor} renderItem={renderItem} keyExtractor={(item) => item.title} />
+          <TouchableOpacity onPress={onDecreaseTemperature}>
+            <MaterialCommunityIcons name={'chevron-left'} size={30} color={colors.grey} />
+          </TouchableOpacity>
+          <Text>{temperature} C°</Text>
+          <TouchableOpacity onPress={onIncreasesTemperature}>
+            <MaterialCommunityIcons name={'chevron-right'} size={30} color={colors.grey} />
+          </TouchableOpacity>
+          {/*<FlatList data={floor} renderItem={renderItem} keyExtractor={(item) => item.title} />*/}
         </View>
       </View>
 
@@ -64,12 +103,20 @@ export const MyWineCellarSetting = ({ navigation, route }) => {
           <Text style={{ ...styles.headerText, fontSize: 25 }}>Humidity Control</Text>
         </View>
         <View style={styles.humidity}>
-          <Text>75%</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onDecreaseHumidity}>
+            <MaterialCommunityIcons name={'chevron-left'} size={30} color={colors.grey} />
+          </TouchableOpacity>
+          <Text>{humidity} %</Text>
+          <TouchableOpacity onPress={onIncreasesHumidity}>
             <MaterialCommunityIcons name={'chevron-right'} size={30} color={colors.grey} />
           </TouchableOpacity>
         </View>
       </View>
+      <TouchableOpacity onPress={update}>
+        <SettingButton>
+          <RedButton text="change" />
+        </SettingButton>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -117,11 +164,12 @@ const styles = StyleSheet.create({
   temperature: {
     backgroundColor: 'white',
     justifyContent: 'center',
+    flexDirection: 'row',
     borderRadius: 10,
     marginHorizontal: 15,
     borderColor: colors.grey,
     borderWidth: 1,
-    padding: 15,
+    padding: 10,
   },
   temperatureFloor: {
     flexDirection: 'row',
@@ -145,3 +193,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
 });
+
+const SettingButton = Styled.View`
+  margin: 5px;
+`;
