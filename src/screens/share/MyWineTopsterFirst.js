@@ -1,6 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components';
 import { SafeAreaView, View, Image, StyleSheet, Text, Button } from 'react-native';
+import colors from '../../assets/colors/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const MyWineTopsterFirst = () => {
@@ -8,6 +9,22 @@ export const MyWineTopsterFirst = () => {
     <SafeAreaView>
       <MainText> Share my Wine Topster </MainText>
       <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }} />
+    <View>
+      <Text style = {textx.title}>Step.1</Text></View>
+    <View
+      style={{
+        flexDirection: "row",
+        height: 300,
+        width: 300,
+        margin: 40,
+        borderColor: "#707070",
+        borderWidth: 2,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+      }}>
+    </View>
     </SafeAreaView>
   );
 };
@@ -37,3 +54,16 @@ const CText = Styled.Text`
   justifyContent: center;
   color: #707070;
 `;
+
+const textx = StyleSheet.create({
+  container: {
+    paddingTop: 230,
+  },
+  title: {
+    color: '#707070',
+    textAlign: 'left',
+    padding: 30,
+    fontSize: 30,
+  },
+  
+});

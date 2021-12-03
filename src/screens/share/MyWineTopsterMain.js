@@ -23,7 +23,7 @@ export const MyWineTopsterMain = ({ navigation }) => {
         <Ctitle>Step 3. Download wine topster and Share it on social media</Ctitle>
       </ContentsView>
       <ContentsView>
-        <TouchableOpacity onPress={() => navigation.navigate('MyWineTopsterNavigator')}>
+        <TouchableOpacity onPress={() => navigation.navigate('MyWineTopsterFirst')}>
           <Button title="Go">Go</Button>
         </TouchableOpacity>
       </ContentsView>

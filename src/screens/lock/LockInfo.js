@@ -12,7 +12,7 @@ export const LockInfo = ({ navigation }) => {
   const login = () => {
     Alert.alert('Your Lock Password Saved:' + password);
   };
-
+  
   return (
     <View style={styles.container}>
       <TextInput
@@ -28,10 +28,10 @@ export const LockInfo = ({ navigation }) => {
         <Text style={styles.submitButtonText}>Save</Text>
       </TouchableOpacity>
       <View style={styles.icon}>
-        <TouchableOpacity onPress={() => navigation.navigate('LockScreen')}>
+        <TouchableOpacity onPress={() => navigation.navigate('LockGate')}>
           <Ionicons name="arrow-back-outline" size={25} color="#707070" />
         </TouchableOpacity>
-        <Text style={styles.text}>Back to Lock Main</Text>
+        <Text style={styles.text}>Wine Cellar Lock</Text>
       </View>
     </View>
   );
