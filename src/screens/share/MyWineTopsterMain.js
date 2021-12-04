@@ -1,6 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
-import { SafeAreaView, View, Image, StyleSheet, Text, Button } from 'react-native';
+import { SafeAreaView, View, Button } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const MyWineTopsterMain = ({ navigation }) => {
@@ -39,20 +39,20 @@ const MainText = Styled.Text`
 `;
 
 const ContentsView = Styled.View`
-flex: 20%;
+  flex: 20%;
 `;
 
 const Ctitle = Styled.Text`
-font-size: 25px;
-padding : 10px;
-text-align: center;
-justifyContent: center;
-color: #707070;
+  font-size: 25px;
+  padding : 10px;
+  text-align: center;
+  justifyContent: center;
+  color: #707070;
 `;
 
 const CText = Styled.Text`
-font-size: 20px;
-text-align: center;
-justifyContent: center;
-color: #707070;
+  font-size: 20px;
+  text-align: center;
+  justifyContent: center;
+  color: #707070;
 `;

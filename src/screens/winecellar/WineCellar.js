@@ -1,22 +1,24 @@
-import React, { useState, useEffect, useRef } from 'react';
-import colors from '../../assets/colors/colors';
+import React, { useEffect, useRef, useState } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   FlatList,
   Image,
+  Linking,
+  Platform,
   SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Platform,
-  Linking,
 } from 'react-native';
 import { useWinecellarDispatch, useWinecellarState } from '../../context/WinecellarContext';
 import { winecellarApi } from '../../api/winecellarApi';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Share from 'react-native-share';
 import { captureRef } from 'react-native-view-shot';
+import Styled from 'styled-components';
+// import AddIcon from '../../assets/svgs/add.svg';
+import colors from '../../constants/colors';
 
 export const MyWineCellar = ({ navigation }) => {
   const viewRef = useRef();
@@ -35,7 +37,6 @@ export const MyWineCellar = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
-    
     setWinecellar(state);
   }, [state]);
   const floor = winecellar.type ? winecellar.type.floor : 1;
@@ -120,6 +121,11 @@ export const MyWineCellar = ({ navigation }) => {
                 showsHorizontalScrollIndicator={false}
               />
             ) : null}
+            <TouchableOpacity onPress={() => navigation.navigate('MyWineCellar Registration')}>
+              <AddButton>
+                <Image style={styles.icon} source={require('../../assets/images/add.png')} />
+              </AddButton>
+            </TouchableOpacity>
           </View>
         ))}
       </View>
@@ -132,7 +138,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    flex: 1,
+    display: 'flex',
     justifyContent: 'center',
     flexDirection: 'row',
     alignItems: 'center',
@@ -153,19 +159,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   wineListWrapper: {
-    flex: 9,
     padding: 10,
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
   },
   wineList: {
+    display: 'flex',
+    justifyContent: 'space-between',
     borderWidth: 1,
     borderColor: colors.grey,
     padding: 5,
     borderRadius: 20,
     backgroundColor: 'white',
+    height: 100,
   },
   wineListHeader: {
-    paddingTop: 20,
-    paddingLeft: 20,
+    padding: 10,
   },
   wineListHeaderText: {
     fontSize: 25,
@@ -186,4 +196,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     padding: 2,
   },
+  icon: {
+    width: 50,
+    height: 50,
+  },
 });
+
+const AddButton = Styled.View`
+  display: flex;
+`;
