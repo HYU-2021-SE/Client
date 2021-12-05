@@ -3,12 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import Permissions from 'react-native-permissions';
 
-const Camera = () => {
-  const [flash, setFlash] = useState('off');
-  const [zoom, setZoom] = useState(0);
-  const [autoFocus, setAutoFocus] = useState('on');
-  const [depth, setDepth] = useState(0);
-  const [type, setType] = useState('back');
+const Camera = ({ navigation, route }) => {
   const [permission, setPermission] = useState('undetermined');
   const cameraRef = useRef(null);
   useEffect(() => {
@@ -19,22 +14,19 @@ const Camera = () => {
     });
   }, []);
 
-  // const toggleFlash = () => {
-  //   setFlash(flashModeOrder[flash]);
-  // };
-  // const zoomOut = () => {
-  //   setZoom(zoom - 0.1 < 0 ? 0 : zoom - 0.1);
-  // };
-  // const zoomIn = () => {
-  //   setZoom(zoom + 0.1 > 1 ? 1 : zoom + 0.1);
-  // };
+  const goBack = async (url) => {
+    navigation.goBack();
+    await route.params.onTake(url);
+  };
+
   const takePicture = async () => {
     if (cameraRef) {
       const options = { quality: 0.5, base64: true };
       const data = await cameraRef.current.takePictureAsync(options);
-      console.log(data.uri);
+      await goBack(data.uri);
     }
   };
+
   return (
     <View style={styles.container}>
       <RNCamera
