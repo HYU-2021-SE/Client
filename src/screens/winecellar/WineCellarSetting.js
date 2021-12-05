@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import colors from '../../assets/colors/colors';
-import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useWinecellarDispatch, useWinecellarState } from '../../context/WinecellarContext';
 import { RedButton } from '../../components/Button';
 import Styled from 'styled-components';
 import { winecellarApi } from '../../api/winecellarApi';
+import { Picker } from '@react-native-picker/picker';
 
 export const MyWineCellarSetting = () => {
   const state = useWinecellarState();
@@ -15,6 +24,7 @@ export const MyWineCellarSetting = () => {
   const [nickName, setNickName] = useState(winecellar.nickName);
   const [humidity, setHumidity] = useState(winecellar.humidity);
   const [temperature, setTemperature] = useState(winecellar.temperature);
+  const [lightColor, setLightColor] = useState(winecellar.lightColor);
 
   const update = async () => {
     const dto = {
@@ -28,6 +38,10 @@ export const MyWineCellarSetting = () => {
     };
     await winecellarApi.update({ ...dto });
     dispatch({ type: 'UPDATE_WINECELLAR', data: dto });
+  };
+
+  const onChangeColor = (color) => {
+    setLightColor(color);
   };
 
   const onChangeNickName = (text) => {
@@ -82,36 +96,71 @@ export const MyWineCellarSetting = () => {
         />
       </View>
 
-      <View style={styles.temperatureWrapper}>
-        <View style={styles.controlTitle}>
-          <Text style={{ ...styles.headerText, fontSize: 25 }}>Temperature Control</Text>
+      <View style={{ flex: 1 }}>
+        {/* Temperature */}
+        <View style={styles.controlWrapper}>
+          <View style={styles.controlTitle}>
+            <Text style={{ ...styles.headerText, fontSize: 25 }}>Temperature Control</Text>
+          </View>
+          <View style={styles.settingWrapper}>
+            <TouchableOpacity onPress={onDecreaseTemperature}>
+              <MaterialCommunityIcons name={'chevron-left'} size={30} color={colors.grey} />
+            </TouchableOpacity>
+            <Text>{temperature} C°</Text>
+            <TouchableOpacity onPress={onIncreasesTemperature}>
+              <MaterialCommunityIcons name={'chevron-right'} size={30} color={colors.grey} />
+            </TouchableOpacity>
+            {/*<FlatList data={floor} renderItem={renderItem} keyExtractor={(item) => item.title} />*/}
+          </View>
         </View>
-        <View style={styles.temperature}>
-          <TouchableOpacity onPress={onDecreaseTemperature}>
-            <MaterialCommunityIcons name={'chevron-left'} size={30} color={colors.grey} />
-          </TouchableOpacity>
-          <Text>{temperature} C°</Text>
-          <TouchableOpacity onPress={onIncreasesTemperature}>
-            <MaterialCommunityIcons name={'chevron-right'} size={30} color={colors.grey} />
-          </TouchableOpacity>
-          {/*<FlatList data={floor} renderItem={renderItem} keyExtractor={(item) => item.title} />*/}
+
+        {/* Humidity */}
+        <View style={styles.controlWrapper}>
+          <View style={styles.controlTitle}>
+            <Text style={{ ...styles.headerText, fontSize: 25 }}>Humidity Control</Text>
+          </View>
+          <View style={styles.settingWrapper}>
+            <TouchableOpacity onPress={onDecreaseHumidity}>
+              <MaterialCommunityIcons name={'chevron-left'} size={30} color={colors.grey} />
+            </TouchableOpacity>
+            <Text>{humidity} %</Text>
+            <TouchableOpacity onPress={onIncreasesHumidity}>
+              <MaterialCommunityIcons name={'chevron-right'} size={30} color={colors.grey} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Color */}
+        <View style={styles.controlWrapper}>
+          <View style={styles.controlTitle}>
+            <Text style={{ ...styles.headerText, fontSize: 25 }}>Color Control</Text>
+          </View>
+          <View style={styles.colorWrapper}>
+            <Picker
+              style={{ marginTop: -30 }}
+              selectedValue={lightColor}
+              onValueChange={(itemValue, itemindex) => onChangeColor(itemValue)}>
+              <Picker.Item label="Aqua" value="aqua" />
+              <Picker.Item label="Beige" value="beige" />
+              <Picker.Item label="Blue" value="blue" />
+              <Picker.Item label="Brown" value="brown" />
+              <Picker.Item label="Coral" value="coral" />
+              <Picker.Item label="Dark Blue" value="darkslateblue" />
+              <Picker.Item label="Dark Green" value="seagreen" />
+              <Picker.Item label="Gold" value="gold" />
+              <Picker.Item label="Green" value="limegreen" />
+              <Picker.Item label="Gray" value="darkgray" />
+              <Picker.Item label="Navy" value="navy" />
+              <Picker.Item label="Orange" value="orange" />
+              <Picker.Item label="Red" value="darkred" />
+              <Picker.Item label="Teal" value="teal" />
+              <Picker.Item label="Violet" value="darkviolet" />
+              <Picker.Item label="White" value="floralwhite" />
+            </Picker>
+          </View>
         </View>
       </View>
 
-      <View style={styles.humidityWrapper}>
-        <View style={styles.controlTitle}>
-          <Text style={{ ...styles.headerText, fontSize: 25 }}>Humidity Control</Text>
-        </View>
-        <View style={styles.humidity}>
-          <TouchableOpacity onPress={onDecreaseHumidity}>
-            <MaterialCommunityIcons name={'chevron-left'} size={30} color={colors.grey} />
-          </TouchableOpacity>
-          <Text>{humidity} %</Text>
-          <TouchableOpacity onPress={onIncreasesHumidity}>
-            <MaterialCommunityIcons name={'chevron-right'} size={30} color={colors.grey} />
-          </TouchableOpacity>
-        </View>
-      </View>
       <TouchableOpacity onPress={update}>
         <SettingButton>
           <RedButton text="change" />
@@ -130,7 +179,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderBottomColor: colors.grey,
     borderBottomWidth: 1,
-    padding: 20,
   },
   headerText: {
     color: colors.wine,
@@ -145,7 +193,6 @@ const styles = StyleSheet.create({
     borderColor: colors.grey,
     borderWidth: 1,
     borderRadius: 10,
-    marginVertical: 15,
     flex: 1,
   },
   inputWrapper: {
@@ -156,12 +203,10 @@ const styles = StyleSheet.create({
   },
   controlTitle: {
     alignItems: 'center',
-    margin: 5,
   },
-  temperatureWrapper: {
-    flex: 1,
+  controlWrapper: {
   },
-  temperature: {
+  settingWrapper: {
     backgroundColor: 'white',
     justifyContent: 'center',
     flexDirection: 'row',
@@ -178,19 +223,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingVertical: 10,
   },
-  humidityWrapper: {
-    flex: 1,
-  },
-  humidity: {
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-    padding: 10,
-    marginHorizontal: 15,
-    borderColor: colors.grey,
-    borderWidth: 1,
+  colorWrapper: {
   },
 });
 

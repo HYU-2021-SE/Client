@@ -35,9 +35,9 @@ export const MyWineCellar = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
-    
     setWinecellar(state);
   }, [state]);
+
   const floor = winecellar.type ? winecellar.type.floor : 1;
 
   const setOsConfig = async () => {
@@ -123,6 +123,16 @@ export const MyWineCellar = ({ navigation }) => {
           </View>
         ))}
       </View>
+
+      {/* 테스트 이미지 */}
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Wine Information', {
+            image: require('../../assets/images/winelabel1.png'),
+          });
+        }}>
+        <Image style={styles.wineImage} source={require('../../assets/images/winelabel1.png')} />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
