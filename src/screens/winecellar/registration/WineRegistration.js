@@ -14,14 +14,18 @@ const WineRegistration = ({ navigation }) => {
   };
 
   const getLabel = async () => {
-    // const response = await imageUploadApi.upload(imgUrl);
-    // const img = response.data;
-    // const labelResponse = await defineLabelApi.define(imgUrl);
-    // const label = labelResponse.data.results[0].entities;
-    // console.log(img);
-    // console.log(label);
-    // navigation.navigate('CheckLabel', { img: img, label: label });
-    navigation.navigate('CheckLabel');
+    const response = await imageUploadApi.upload(imgUrl);
+    const img = response.data;
+    const labelResponse = await defineLabelApi.define(imgUrl);
+    const label = labelResponse.data.results[0].entities;
+    console.log(img);
+    console.log(label);
+    goNextPage(img, label);
+    // navigation.navigate('CheckLabel');
+  };
+
+  const goNextPage = (img, label) => {
+    navigation.navigate('CheckLabel', { img: img, label: label });
   };
 
   return (
@@ -29,7 +33,7 @@ const WineRegistration = ({ navigation }) => {
       <WinecellarHeader text="Wine Registration" />
       <TouchableOpacity onPress={() => navigation.navigate('Camera', { onTake: onTake })}>
         <BtnBox>
-          <Image source={require('../../assets/images/camera.png')} />
+          <Image source={require('../../../assets/images/camera.png')} />
         </BtnBox>
       </TouchableOpacity>
     </Container>

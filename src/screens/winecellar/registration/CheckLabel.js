@@ -2,6 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 import { RedButton } from '../../../components/Button';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+// import { Image } from 'react-native';
 
 const CheckLabel = ({ navigation, route }) => {
   console.log(route.params);
@@ -10,7 +11,11 @@ const CheckLabel = ({ navigation, route }) => {
   return (
     <Container>
       <LabelBox>
-        <LabelImage source={img} />
+        <Image
+          source={{
+            uri: img,
+          }}
+        />
       </LabelBox>
       <ButtonBox>
         <TouchableOpacity onPress={() => navigation.navigate('Registration')}>
@@ -29,19 +34,28 @@ export default CheckLabel;
 
 const Container = Styled.View`
   display: flex;
+  width: 100%;
+  align-items: center;
+  flex: 1;
+  margin-top: 50px;
 `;
 
 const LabelBox = Styled.View`
   width: 100%;
+  padding: 10px;
+  align-items: center;
 `;
 
-const LabelImage = Styled.Image`
-  width: 300;
-  height: 300;
+const Image = Styled.Image`
+  width: 350;
+  height: 350;
+  margin: auto;
 `;
 
 const ButtonBox = Styled.View`
   display: flex;
-  justify-content: space-between;
-  padding: 10 30;
+  width: 100%;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
 `;

@@ -44,14 +44,14 @@ const Box = Styled.View`
 
 const Title = Styled.Text`
   color: ${colors.wine};
-  fontSize: 35;
-  margin: 20;
+  fontSize: 35px;
+  margin: 20px;
 `;
 
 const TextInput = Styled.TextInput`
-  fontSize: 18;
-  padding: 10 20;
+  fontSize: 18px;
   borderColor: ${colors.grey};
-  borderWidth: 1;
-  borderRadius: 10;
+  borderWidth: 1px;
+  borderRadius: 10px;
+  margin: 10px;
 `;
