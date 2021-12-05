@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Styled from 'styled-components';
-import { WinecellarHeader } from '../../components/Header';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { imageUploadApi } from '../../api/uploadApi';
-import { defineLabelApi } from '../../api/wineDefinitionApi';
+import { WinecellarHeader } from '../../../components/Header';
+import { imageUploadApi } from '../../../api/uploadApi';
+import { defineLabelApi } from '../../../api/wineDefinitionApi';
 
 const WineRegistration = ({ navigation }) => {
   const [imgUrl, setImgUrl] = useState('');
@@ -14,12 +14,14 @@ const WineRegistration = ({ navigation }) => {
   };
 
   const getLabel = async () => {
-    const response = await imageUploadApi.upload(imgUrl);
-    const img = response.data;
-    const labelResponse = await defineLabelApi.define(imgUrl);
-    const label = labelResponse.data.results[0].entities;
-    console.log(img);
-    console.log(label);
+    // const response = await imageUploadApi.upload(imgUrl);
+    // const img = response.data;
+    // const labelResponse = await defineLabelApi.define(imgUrl);
+    // const label = labelResponse.data.results[0].entities;
+    // console.log(img);
+    // console.log(label);
+    // navigation.navigate('CheckLabel', { img: img, label: label });
+    navigation.navigate('CheckLabel');
   };
 
   return (

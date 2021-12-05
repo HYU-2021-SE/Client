@@ -17,7 +17,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Share from 'react-native-share';
 import { captureRef } from 'react-native-view-shot';
 import Styled from 'styled-components';
-// import AddIcon from '../../assets/svgs/add.svg';
 import colors from '../../constants/colors';
 
 export const MyWineCellar = ({ navigation }) => {
