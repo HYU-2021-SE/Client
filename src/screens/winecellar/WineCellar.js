@@ -1,22 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
-import colors from '../../assets/colors/colors';
+import React, { useEffect, useRef, useState } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
-  FlatList,
   Image,
+  Linking,
+  Platform,
   SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Platform,
-  Linking,
 } from 'react-native';
 import { useWinecellarDispatch, useWinecellarState } from '../../context/WinecellarContext';
 import { winecellarApi } from '../../api/winecellarApi';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Share from 'react-native-share';
 import { captureRef } from 'react-native-view-shot';
+import Styled from 'styled-components';
+import colors from '../../constants/colors';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export const MyWineCellar = ({ navigation }) => {
   const viewRef = useRef();
@@ -74,13 +75,13 @@ export const MyWineCellar = ({ navigation }) => {
     }
   };
 
-  const RenderWineImage = ({ item }) => {
+  const RenderWineImage = (item) => {
     return (
       <View style={styles.wineWrapper}>
         <TouchableOpacity>
-          <Image source={item.image} style={styles.wineImage} />
+          <Image source={{ url: item.wine.labelImage }} style={styles.wineImage} />
         </TouchableOpacity>
-        <Text style={styles.wineName}>{item.name}</Text>
+        <Text style={styles.wineName}>{item.wine.wineName}</Text>
       </View>
     );
   };
@@ -111,15 +112,25 @@ export const MyWineCellar = ({ navigation }) => {
           <View key={index} contentContainerStyle={styles.wineList}>
             <View style={styles.wineListHeader}>
               <Text style={styles.wineListHeaderText}>Floor {index + 1}</Text>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('MyWineCellar Registration', {
+                    screen: 'Registration',
+                    params: { location: index + 1 },
+                  })
+                }>
+                <AddButton>
+                  <Image style={styles.icon} source={require('../../assets/images/add.png')} />
+                </AddButton>
+              </TouchableOpacity>
             </View>
-            {winecellar.wines ? (
-              <FlatList
-                horizontal
-                data={winecellar.wines.map((wine) => wine.location === index + 1)}
-                renderItem={({ item }) => <RenderWineImage item={item} />}
-                showsHorizontalScrollIndicator={false}
-              />
-            ) : null}
+            <ScrollView style={styles.scrollView} horizontal={true}>
+              {winecellar.wines
+                ? winecellar.wines
+                  .filter((wine) => wine.location === index + 1)
+                  .map((w) => <RenderWineImage key={w.wineId} wine={w} />)
+                : null}
+            </ScrollView>
           </View>
         ))}
       </View>
@@ -142,7 +153,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    flex: 1,
+    display: 'flex',
     justifyContent: 'center',
     flexDirection: 'row',
     alignItems: 'center',
@@ -163,19 +174,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   wineListWrapper: {
-    flex: 9,
     padding: 10,
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
   },
   wineList: {
+    display: 'flex',
+    justifyContent: 'space-between',
     borderWidth: 1,
     borderColor: colors.grey,
     padding: 5,
     borderRadius: 20,
     backgroundColor: 'white',
+    height: 100,
   },
   wineListHeader: {
-    paddingTop: 20,
-    paddingLeft: 20,
+    padding: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   wineListHeaderText: {
     fontSize: 25,
@@ -187,6 +205,10 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.grey,
     borderBottomWidth: 1,
   },
+  wineBox: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
   wineImage: {
     resizeMode: 'contain',
     height: 200,
@@ -196,4 +218,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     padding: 2,
   },
+  icon: {
+    width: 50,
+    height: 50,
+  },
 });
+
+const AddButton = Styled.View`
+  display: flex;
+`;

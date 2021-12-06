@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import colors from '../../assets/colors/colors';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +13,7 @@ import { useWinecellarDispatch, useWinecellarState } from '../../context/Winecel
 import { RedButton } from '../../components/Button';
 import Styled from 'styled-components';
 import { winecellarApi } from '../../api/winecellarApi';
+import colors from '../../constants/colors';
 import { Picker } from '@react-native-picker/picker';
 
 export const MyWineCellarSetting = () => {
@@ -31,7 +31,7 @@ export const MyWineCellarSetting = () => {
       winecellarId: winecellar.winecellarId,
       lock: winecellar.lock,
       lockPassword: winecellar.lockPassword,
-      lightColor: winecellar.lightColor,
+      lightColor: lightColor,
       nickName,
       humidity,
       temperature,
@@ -160,7 +160,6 @@ export const MyWineCellarSetting = () => {
           </View>
         </View>
       </View>
-
       <TouchableOpacity onPress={update}>
         <SettingButton>
           <RedButton text="change" />

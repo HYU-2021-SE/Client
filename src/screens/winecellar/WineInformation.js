@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, ScrollView } from 'react-native';
-import colors from '../../assets/colors/colors';
+import colors from '../../constants/colors';
 
 export const WineInformation = ({ route }) => {
   const param = route;
