@@ -2,7 +2,6 @@ import React from 'react';
 import Styled from 'styled-components';
 import { RedButton } from '../../../components/Button';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-// import { Image } from 'react-native';
 
 const CheckLabel = ({ navigation, route }) => {
   console.log(route.params);
@@ -22,7 +21,13 @@ const CheckLabel = ({ navigation, route }) => {
           <RedButton text="Try again" />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('LabelRegistration', { img: img, label: label })}>
+          onPress={() =>
+            navigation.navigate('LabelRegistration', {
+              img: img,
+              label: label,
+              location: route.params.location,
+            })
+          }>
           <RedButton text="Use" />
         </TouchableOpacity>
       </ButtonBox>

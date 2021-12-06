@@ -13,7 +13,7 @@ export const WinecellarHeader = (props) => {
 
 const Container = Styled.View`
   color: #a50034;
-  padding: 30px 0;
+  padding: 30px 0 0;
   max-height: 100%;
 `;
 

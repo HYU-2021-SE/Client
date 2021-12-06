@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
-  FlatList,
   Image,
   Linking,
   Platform,
@@ -18,6 +17,7 @@ import Share from 'react-native-share';
 import { captureRef } from 'react-native-view-shot';
 import Styled from 'styled-components';
 import colors from '../../constants/colors';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export const MyWineCellar = ({ navigation }) => {
   const viewRef = useRef();
@@ -74,13 +74,13 @@ export const MyWineCellar = ({ navigation }) => {
     }
   };
 
-  const RenderWineImage = ({ item }) => {
+  const RenderWineImage = (item) => {
     return (
       <View style={styles.wineWrapper}>
         <TouchableOpacity>
-          <Image source={item.image} style={styles.wineImage} />
+          <Image source={{ url: item.wine.labelImage }} style={styles.wineImage} />
         </TouchableOpacity>
-        <Text style={styles.wineName}>{item.name}</Text>
+        <Text style={styles.wineName}>{item.wine.wineName}</Text>
       </View>
     );
   };
@@ -111,20 +111,25 @@ export const MyWineCellar = ({ navigation }) => {
           <View key={index} contentContainerStyle={styles.wineList}>
             <View style={styles.wineListHeader}>
               <Text style={styles.wineListHeaderText}>Floor {index + 1}</Text>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('MyWineCellar Registration', {
+                    screen: 'Registration',
+                    params: { location: index + 1 },
+                  })
+                }>
+                <AddButton>
+                  <Image style={styles.icon} source={require('../../assets/images/add.png')} />
+                </AddButton>
+              </TouchableOpacity>
             </View>
-            {winecellar.wines ? (
-              <FlatList
-                horizontal
-                data={winecellar.wines.map((wine) => wine.location === index + 1)}
-                renderItem={({ item }) => <RenderWineImage item={item} />}
-                showsHorizontalScrollIndicator={false}
-              />
-            ) : null}
-            <TouchableOpacity onPress={() => navigation.navigate('MyWineCellar Registration')}>
-              <AddButton>
-                <Image style={styles.icon} source={require('../../assets/images/add.png')} />
-              </AddButton>
-            </TouchableOpacity>
+            <ScrollView style={styles.scrollView} horizontal={true}>
+              {winecellar.wines
+                ? winecellar.wines
+                  .filter((wine) => wine.location === index + 1)
+                  .map((w) => <RenderWineImage key={w.wineId} wine={w} />)
+                : null}
+            </ScrollView>
           </View>
         ))}
       </View>
@@ -175,6 +180,9 @@ const styles = StyleSheet.create({
   },
   wineListHeader: {
     padding: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   wineListHeaderText: {
     fontSize: 25,
@@ -185,6 +193,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderBottomColor: colors.grey,
     borderBottomWidth: 1,
+  },
+  wineBox: {
+    display: 'flex',
+    flexDirection: 'row',
   },
   wineImage: {
     resizeMode: 'contain',

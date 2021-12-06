@@ -5,8 +5,10 @@ import { WinecellarHeader } from '../../../components/Header';
 import { imageUploadApi } from '../../../api/uploadApi';
 import { defineLabelApi } from '../../../api/wineDefinitionApi';
 
-const WineRegistration = ({ navigation }) => {
+const WineRegistration = ({ navigation, route }) => {
   const [imgUrl, setImgUrl] = useState('');
+  console.log(route);
+  console.log(route.params);
 
   const onTake = async (value) => {
     setImgUrl(value);
@@ -21,11 +23,11 @@ const WineRegistration = ({ navigation }) => {
     console.log(img);
     console.log(label);
     goNextPage(img, label);
-    // navigation.navigate('CheckLabel');
   };
 
   const goNextPage = (img, label) => {
-    navigation.navigate('CheckLabel', { img: img, label: label });
+    console.log(route.params.floor);
+    navigation.navigate('CheckLabel', { img: img, label: label, location: route.params.floor });
   };
 
   return (
