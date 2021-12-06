@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import colors from '../../assets/colors/colors';
 import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useWinecellarDispatch, useWinecellarState } from '../../context/WinecellarContext';
 import { RedButton } from '../../components/Button';
 import Styled from 'styled-components';
 import { winecellarApi } from '../../api/winecellarApi';
+import colors from '../../constants/colors';
 
 export const MyWineCellarSetting = () => {
   const state = useWinecellarState();

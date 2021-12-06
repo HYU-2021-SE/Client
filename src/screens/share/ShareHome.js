@@ -20,7 +20,7 @@ export const ShareHome = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <View style={BView.case3}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('MyWineTopsterMain')}>
           <RedButton text="Make my Wine Topster" />
         </TouchableOpacity>
       </View>
