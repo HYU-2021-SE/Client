@@ -30,7 +30,6 @@ export class WineResponse {
 export const wineApi = {
   async create(wine: WineCreateRequest): Promise<AxiosResponse<WineResponse>> {
     const token = await AsyncStorage.getItem('accessToken');
-    console.log(wine);
     return wineInstance.post(
       '/',
       { ...wine },
@@ -41,24 +40,24 @@ export const wineApi = {
       },
     );
   },
-  // async get(): Promise<AxiosResponse<WinecellarResponse>> {
-  //   const token = await AsyncStorage.getItem('accessToken');
-  //   return winecellarInstance.get('/', {
-  //     headers: {
-  //       authorization: token,
-  //     },
-  //   });
-  // },
-  // async update(dto: WinecellarUpdateRequest): Promise<AxiosResponse<WinecellarResponse>> {
-  //   const token = await AsyncStorage.getItem('accessToken');
-  //   return winecellarInstance.put(
-  //     '/',
-  //     { ...dto },
-  //     {
-  //       headers: {
-  //         authorization: token,
-  //       },
-  //     },
-  //   );
-  // },
+  async get(id): Promise<AxiosResponse<WineResponse>> {
+    const token = await AsyncStorage.getItem('accessToken');
+    return wineInstance.get(`/${id}`, {
+      headers: {
+        authorization: token,
+      },
+    });
+  },
+  async update(id, corkImage): Promise<AxiosResponse<WineResponse>> {
+    const token = await AsyncStorage.getItem('accessToken');
+    return wineInstance.put(
+      `/${id}`,
+      { corkImage },
+      {
+        headers: {
+          authorization: token,
+        },
+      },
+    );
+  },
 };

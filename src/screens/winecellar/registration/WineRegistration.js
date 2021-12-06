@@ -7,8 +7,6 @@ import { defineLabelApi } from '../../../api/wineDefinitionApi';
 
 const WineRegistration = ({ navigation, route }) => {
   const [imgUrl, setImgUrl] = useState('');
-  console.log(route);
-  console.log(route.params);
 
   const onTake = async (value) => {
     setImgUrl(value);
@@ -20,13 +18,10 @@ const WineRegistration = ({ navigation, route }) => {
     const img = response.data;
     const labelResponse = await defineLabelApi.define(imgUrl);
     const label = labelResponse.data.results[0].entities;
-    console.log(img);
-    console.log(label);
     goNextPage(img, label);
   };
 
   const goNextPage = (img, label) => {
-    console.log(route.params.floor);
     navigation.navigate('CheckLabel', { img: img, label: label, location: route.params.floor });
   };
 

@@ -42,7 +42,6 @@ const WineLabelRegistration = ({ navigation, route }) => {
       producedDate: undefined,
     });
 
-    console.log(response);
     navigation.navigate('MyWineCellar Home');
   };
 

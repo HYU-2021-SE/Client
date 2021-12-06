@@ -4,7 +4,6 @@ import { RedButton } from '../../../components/Button';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const CheckLabel = ({ navigation, route }) => {
-  console.log(route.params);
   const img = route.params.img;
   const label = route.params.label;
   return (
