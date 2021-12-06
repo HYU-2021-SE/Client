@@ -128,22 +128,24 @@ export const MyWineCellar = ({ navigation }) => {
               {winecellar.wines
                 ? winecellar.wines
                   .filter((wine) => wine.location === index + 1)
-                  .map((w) => <RenderWineImage key={w.wineId} wine={w} />)
+                  .map((w) => (
+                    <View key={w.wineId}>
+                      <TouchableOpacity
+                        onPress={() => {
+                          navigation.navigate('Wine Information', {
+                            image: w.labelImage,
+                            wine: w
+                          });
+                        }}>
+                        <RenderWineImage wine={w} />
+                      </TouchableOpacity>
+                    </View>
+                  ))
                 : null}
             </ScrollView>
           </View>
         ))}
       </View>
-
-      {/* 테스트 이미지 */}
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('Wine Information', {
-            image: require('../../assets/images/winelabel1.png'),
-          });
-        }}>
-        <Image style={styles.wineImage} source={require('../../assets/images/winelabel1.png')} />
-      </TouchableOpacity>
     </SafeAreaView>
   );
 };

@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import colors from '../../constants/colors';
+import {wineApi} from '../../api/wineApi';
 
 export const WineInformation = ({ route }) => {
-  const param = route;
+  const [wine, setWine] = useState(route.params.wine);
+
+  const fetch = async () => {
+    const response = await wineApi.get(route.params.wine.wineId);
+    setWine(response.data);
+  }
+
+  useEffect(() => {
+    fetch();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -12,18 +22,18 @@ export const WineInformation = ({ route }) => {
           <View style={styles.headerTextListWrapper}>
             <View style={styles.headerTextWrapper}>
               <Text style={styles.headerTextTitle}>Name</Text>
-              <Text style={styles.headerText}>Wine Name</Text>
+              <Text style={styles.headerText}>{wine.wineName}</Text>
             </View>
             <View style={styles.headerTextWrapper}>
               <Text style={styles.headerTextTitle}>Vintage</Text>
-              <Text style={styles.headerText}>Wine Vintage</Text>
+              <Text style={styles.headerText}>{wine.vintage}</Text>
             </View>
             <View style={styles.headerTextWrapper}>
               <Text style={styles.headerTextTitle}>Date of Purchase</Text>
-              <Text style={styles.headerText}>Date</Text>
+              <Text style={styles.headerText}>{new Date(Date.parse(wine.purchaseDate)).toDateString()}</Text>
             </View>
           </View>
-          <Image style={styles.wineImage} source={param.image} />
+          <Image style={styles.wineImage} source={{ url: wine.labelImage }} />
         </View>
 
         {/* Summary */}
@@ -97,6 +107,7 @@ const styles = StyleSheet.create({
   },
   headerTextListWrapper: {
     padding: 15,
+    maxWidth: 250,
   },
   headerTextWrapper: {
     marginVertical: 2,
