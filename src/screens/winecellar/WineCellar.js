@@ -38,6 +38,7 @@ export const MyWineCellar = ({ navigation }) => {
   useEffect(() => {
     setWinecellar(state);
   }, [state]);
+
   const floor = winecellar.type ? winecellar.type.floor : 1;
 
   const setOsConfig = async () => {
@@ -127,7 +128,19 @@ export const MyWineCellar = ({ navigation }) => {
               {winecellar.wines
                 ? winecellar.wines
                   .filter((wine) => wine.location === index + 1)
-                  .map((w) => <RenderWineImage key={w.wineId} wine={w} />)
+                  .map((w) => (
+                    <View key={w.wineId}>
+                      <TouchableOpacity
+                        onPress={() => {
+                          navigation.navigate('Wine Information', {
+                            image: w.labelImage,
+                            wine: w
+                          });
+                        }}>
+                        <RenderWineImage wine={w} />
+                      </TouchableOpacity>
+                    </View>
+                  ))
                 : null}
             </ScrollView>
           </View>
