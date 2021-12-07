@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import { useWinecellarState } from '../../context/WinecellarContext';
 import Styled from 'styled-components';
-import {RedButton} from '../../components/Button';
+import { RedButton } from '../../components/Button';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const LockApp = () => {
+const LockApp = ({ navigation }) => {
   const state = useWinecellarState();
   const lock = state.lock;
 
@@ -13,7 +14,9 @@ const LockApp = () => {
           <Text>Your winecellar is locked.</Text>
           <Text>Do you want to open the winecellar?</Text>
         <ButtonBox>
-          <RedButton text="YES"/>
+          <TouchableOpacity onPress={() => navigation.navigate("CellarLock")}>
+            <RedButton text="YES"/>
+          </TouchableOpacity>
           <RedButton text="NO"/>
         </ButtonBox>
       </TextBox> :
@@ -21,8 +24,12 @@ const LockApp = () => {
           <Text>Your winecellar is not locked.</Text>
           <Text>Do you want to lock the winecellar?</Text>
           <ButtonBox>
-            <RedButton text="YES"/>
-            <RedButton text="NO"/>
+            <TouchableOpacity onPress={() => navigation.navigate("CellarLock")}>
+              <RedButton text="YES"/>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("MyWineCellar Home")}>
+              <RedButton text="NO"/>
+            </TouchableOpacity>
           </ButtonBox>
         </TextBox>
       }

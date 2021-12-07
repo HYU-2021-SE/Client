@@ -1,50 +1,85 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Styled from 'styled-components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { SafeAreaView, View, StyleSheet, ScrollView, Alert } from 'react-native';
+import { SafeAreaView, View, StyleSheet, ScrollView, Alert, TextInput } from 'react-native';
 import { Image } from 'react-native';
+import { WinecellarHeader } from '../../components/Header';
+import {useWinecellarDispatch, useWinecellarState} from '../../context/WinecellarContext';
+import colors from '../../constants/colors';
+import { winecellarApi } from '../../api/winecellarApi';
 
-export const CellarLock = () => {
+export const CellarLock = ({ navigation }) => {
+  const [isSame, setIsSame] = useState(false);
+  const [newPw, setNewPw] = useState('');
+  const [checkPw, setCheckPw] = useState('');
+  const winecellar = useWinecellarState();
+  const dispatch = useWinecellarDispatch();
+
+  const onChangeNewPw = (e) => {
+    const value = e.nativeEvent.text;
+    setNewPw(value);
+    setSame(value, checkPw);
+  }
+
+  const onChangeCheckPw = (e) => {
+    const value = e.nativeEvent.text;
+    setCheckPw(value);
+    setSame(newPw, value);
+  }
+
+  const setSame = (newPassword, checkPassword) => {
+    if (checkPassword === '' || newPassword === '') {
+      return setIsSame(false);
+    }
+    return setIsSame(newPassword === checkPassword);
+  }
+
+  const setLock = async () => {
+    if (!isSame) {
+      Alert.alert("Passwords are not same.");
+      return;
+    }
+    const dto = {
+      winecellarId: winecellar.winecellarId,
+      lock: true,
+      lockPassword: newPw,
+      lightColor: winecellar.lightColor,
+      nickName: winecellar.nickName,
+      humidity: winecellar.humidity,
+      temperature: winecellar.temperature,
+    };
+    await winecellarApi.update({ ...dto });
+    dispatch({ type: 'UPDATE_WINECELLAR', data: dto });
+    Alert.alert("Successfully locked!");
+    navigation.goBack();
+  }
+
   return (
     <SafeAreaView>
       <ScrollView>
-        <MainText> WineCellar Lock</MainText>
-        <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }} />
-        <TouchableOpacity
-          style={styles.submitButton}
-          onPress={() => Alert.alert('All the floor is locked successfully')}>
+        <WinecellarHeader text='winecellar Lock'/>
+        <View style={styles.submitButton}>
           <Text style={styles.submitButtonText}>Lock Full Floor</Text>
-        </TouchableOpacity>
-        <Text>or</Text>
-        <Text>Lock floor-by-floor</Text>
+        </View>
         <View>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <FloorText>Wine Upper </FloorText>
-            <TouchableOpacity onPress={() => Alert.alert('Wine Upper is locked successfully')}>
+          <Info>Enter a new password</Info>
+          <InputBox>
+            <PWText>New PW</PWText>
+            <Input secureTextEntry onChange={onChangeNewPw} />
+          </InputBox>
+          <InputBox>
+            <PWText>Check PW</PWText>
+            <Input secureTextEntry onChange={onChangeCheckPw}/>
+          </InputBox>
+          <Text style={{color: colors.red}}>{isSame ? 'Passwords are same' : 'Passwords are not same'}</Text>
+        </View>
+        <View>
+          <TouchableOpacity onPress={setLock}>
+            <LockButtonBox>
+              <FloorText>Lock</FloorText>
               <Image style={styles.stretch} source={require('../../assets/images/lockicon.png')} />
-            </TouchableOpacity>
-          </View>
-          <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 6 }} />
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <FloorText>Wine Middle </FloorText>
-            <TouchableOpacity onPress={() => Alert.alert('Wine Middle is locked successfully')}>
-              <Image style={styles.stretch} source={require('../../assets/images/lockicon.png')} />
-            </TouchableOpacity>
-          </View>
-          <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 6 }} />
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <FloorText>Wine Middle </FloorText>
-            <TouchableOpacity onPress={() => Alert.alert('Wine Middle is locked successfully')}>
-              <Image style={styles.stretch} source={require('../../assets/images/lockicon.png')} />
-            </TouchableOpacity>
-          </View>
-          <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 6 }} />
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <FloorText>Wine Lower </FloorText>
-            <TouchableOpacity onPress={() => Alert.alert('Wine Lower is locked successfully')}>
-              <Image style={styles.stretch} source={require('../../assets/images/lockicon.png')} />
-            </TouchableOpacity>
-          </View>
+            </LockButtonBox>
+          </TouchableOpacity>
           <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 6 }} />
         </View>
       </ScrollView>
@@ -55,8 +90,6 @@ const styles = StyleSheet.create({
   stretch: {
     width: 27,
     height: 38,
-    resizeMode: 'stretch',
-    alignContent: 'flex-end',
   },
   submitButton: {
     backgroundColor: '#B52E58',
@@ -70,13 +103,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const MainText = Styled.Text`
-  font-size: 40px;
-  text-align: center;
-  justifyContent: center;
-  color: #B52E58;
-`;
-
 const Text = Styled.Text`
   font-size: 30px;
   text-align: center;
@@ -85,9 +111,43 @@ const Text = Styled.Text`
   padding: 3px;
   color: #707070;
 `;
+
+const Info = Styled.Text`
+  font-size: 30px;
+  text-align: center;
+  justifyContent: center;
+  color: '#707070';
+  margin-bottom: 20px;
+`;
+
+const InputBox = Styled.View`
+  display: flex;
+  flex-direction: row;
+`;
+
+const PWText = Styled.Text`
+  font-size: 24px;
+  margin: 20px 10px;
+  width: 150px;
+`;
+
+const Input = Styled.TextInput`
+  border: 1px solid;
+  margin: 20px 10px;
+  width: 170px;
+`;
+
+const LockButtonBox = Styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+`;
+
 const FloorText = Styled.Text`
   font-size: 25px;
-  text-align: left;
   line-height: 40px;
   padding: 30px;
   color: #707070;

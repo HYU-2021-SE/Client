@@ -1,7 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components';
-import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const LockGate = ({navigation}) => {
   const [number, onChangeNumber] = React.useState(null);
@@ -9,8 +9,8 @@ export const LockGate = ({navigation}) => {
   return (
     <SafeAreaView>
       <MainText> WineCellar Lock </MainText>
-      <View style={{borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20}}/>
-      <View style={{height: 50}}>
+      <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }}/>
+      <View style={{ height: 50 }}>
         <LTitle>Enter the 6-digit password</LTitle>
         <TextInput
           style={styles.input}
@@ -19,9 +19,12 @@ export const LockGate = ({navigation}) => {
           keyboardType="numeric"
           secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.submitButton}
-                          onPress={() => navigation.navigate('CellarLock')}>
-          <Text style={styles.submitButtonText}>Enter</Text></TouchableOpacity>
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={() => navigation.navigate('CellarLock')}
+        >
+          <Text style={styles.submitButtonText}>Enter</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
 
@@ -36,10 +39,10 @@ const MainText = Styled.Text`
 `;
 
 const LTitle = Styled.Text`
-font-size: 30px;
-text-align: center;
-justifyContent: center;
-color: '#707070';
+  font-size: 30px;
+  text-align: center;
+  justifyContent: center;
+  color: '#707070';
 `;
 
 const ContentsView = Styled.View`
