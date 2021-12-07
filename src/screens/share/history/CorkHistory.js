@@ -72,11 +72,16 @@ const CorkContainer = Styled.View`
 const Cork = Styled.Image`
   width: 80px;
   height: 80px;
+  margin-bottom: 10px;
 `;
 
 const CorkBox = Styled.View`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-evenly;
+  padding-right: 20px;
   width: 300px;
   height: 330px;
 `;
