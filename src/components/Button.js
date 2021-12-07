@@ -2,9 +2,10 @@ import React from 'react';
 import Styled from 'styled-components';
 
 export const RedButton = (props) => {
+  const size = props.fontSize ?? '40px';
   return (
     <Btn>
-      <Text>{props.text}</Text>
+      <Text size={size}>{props.text}</Text>
     </Btn>
   );
 };
@@ -19,7 +20,7 @@ const Btn = Styled.View`
 
 const Text = Styled.Text`
   color: #ffffff;
-  font-size: 40px;
+  font-size: ${props => props.size}
   text-align: center;
   line-height: 40px;
 `;
