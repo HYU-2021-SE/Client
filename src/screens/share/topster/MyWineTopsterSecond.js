@@ -14,11 +14,11 @@ export const MyWineTopsterSecond = ({ route }) => {
   const labelList = state.wines.map(wine => wine.labelImage);
   const row = route.params.row;
   const column = route.params.column;
-  const width = 270 / row;
-  const height = 270 / column;
+  const width = 270 / row + 3;
+  const height = 270 / column + 3;
 
   const shareImages = async () => {
-    const uri = await captureRef(topsterRef, { format: 'png', quality: 0.7 });
+    const uri = await captureRef(topsterRef, { format: 'png', quality: 1, width: 270, height: 270 });
     Share.open({ url: uri })
       .then((res) => console.log(res))
       .catch();
@@ -43,7 +43,7 @@ export const MyWineTopsterSecond = ({ route }) => {
                 <Box width={width} height={height}>
                   {labelList[index * row + i] ?
                     <Image width={width} height={height} source={{ url: labelList[index * row + i] }}/>
-                    : <Text>empty</Text>
+                    : <Text>empty TT</Text>
                   }
                 </Box>
               )}
@@ -73,8 +73,8 @@ const StepText = Styled.Text`
 
 const ContentsView = Styled.View`
   display: flex;
-  height: 280px;
-  width: 280px;
+  height: 270px;
+  width: 270px;
   flex-direction: column;
   justify-content: center;
   margin: 20px auto;
