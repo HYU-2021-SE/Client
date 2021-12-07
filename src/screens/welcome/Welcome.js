@@ -66,7 +66,7 @@ const TextCover = Styled.View`
 `;
 
 const Title = Styled.Text`
-  font-size: 80px;
+  font-size: 70px;
   line-height: 80px;
 `;
 

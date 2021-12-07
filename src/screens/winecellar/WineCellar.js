@@ -18,6 +18,7 @@ import { captureRef } from 'react-native-view-shot';
 import Styled from 'styled-components';
 import colors from '../../constants/colors';
 import { ScrollView } from 'react-native-gesture-handler';
+import {WinecellarHeader} from '../../components/Header';
 
 export const MyWineCellar = ({ navigation }) => {
   const viewRef = useRef();
@@ -90,20 +91,21 @@ export const MyWineCellar = ({ navigation }) => {
     <SafeAreaView style={styles.container} ref={viewRef}>
       {/* 헤더 (와인셀러) */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>My WineCellar</Text>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('MyWineCellar Setting', {
-              nickName: winecellar.nickName ? winecellar.nickName : winecellar.type,
-              floor,
-            })
-          }>
-          <MaterialCommunityIcons name="set-all" size={30} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={ShareImages}>
-          <Text style={styles.share}>{showInstagramStory ? 'Share Instagram Story' : 'Share'}</Text>
-          <Ionicons name="share-social-outline" size={30} />
-        </TouchableOpacity>
+        <WinecellarHeader text="My WineCellar" underBar={false} />
+        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 23 }}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('MyWineCellar Setting', {
+                nickName: winecellar.nickName ? winecellar.nickName : winecellar.type,
+                floor,
+              })
+            }>
+            <MaterialCommunityIcons name="cog" size={30} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={ShareImages}>
+            <Ionicons name="share-social-outline" size={30} />
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* 와인 선반 */}
@@ -161,6 +163,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomColor: colors.grey,
     borderBottomWidth: 1,
+    paddingBottom: 10,
   },
   headerText: {
     color: colors.wine,
