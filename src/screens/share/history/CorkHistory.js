@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { SafeAreaView } from 'react-native';
 import colors from '../../../constants/colors';
 import { WinecellarHeader } from '../../../components/Header';
 import Styled from 'styled-components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useWinecellarState } from '../../../context/WinecellarContext';
+import {captureRef} from 'react-native-view-shot';
+import Share from 'react-native-share';
+import {RedButton} from '../../../components/Button';
 
 const CorkHistory = ({ navigation }) => {
+  const corkRef = useRef(null);
   const winecellar = useWinecellarState();
   const wines = winecellar.wines.filter(wine => wine.location === -1);
+
+  const shareImages = async () => {
+    const uri = await captureRef(corkRef, { format: 'png', quality: 1, width: 330, height: 400 });
+    Share.open({ url: uri })
+      .then((res) => console.log(res))
+      .catch();
+  };
 
   return (
     <SafeAreaView>
@@ -19,7 +30,7 @@ const CorkHistory = ({ navigation }) => {
           <Selector color={colors.grey}>Receipt</Selector>
         </TouchableOpacity>
       </SelectorBox>
-      <CorkContainer>
+      <CorkContainer ref={corkRef}>
         <CorkBox>
           {wines.map(wine => <Cork key={wine.wineId} source={{ uri: wine.corkImage }}/>)}
         </CorkBox>
@@ -28,6 +39,9 @@ const CorkHistory = ({ navigation }) => {
           <Tag>#DIOnyoS</Tag>
         </TagBox>
       </CorkContainer>
+      <TouchableOpacity onPress={shareImages}>
+        <RedButton text="Share" fontSize="20px" />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -41,7 +55,7 @@ const SelectorBox = Styled.View`
 `;
 
 const Selector = Styled.Text`
-  font-size: 30px;
+  font-size: 18px;
   color: ${props => props.color};
 `;
 
@@ -51,7 +65,7 @@ const CorkContainer = Styled.View`
   border: 1px solid;
   width: 300px;
   height: 400px;
-  margin: 20px auto auto;
+  margin: 10px auto 5px auto;
   padding: 10px;
 `;
 

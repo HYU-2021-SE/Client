@@ -29,6 +29,6 @@ const SelectorBox = Styled.View`
 `;
 
 const Selector = Styled.Text`
-  font-size: 30px;
+  font-size: 18px;
   color: ${props => props.color};
 `;
