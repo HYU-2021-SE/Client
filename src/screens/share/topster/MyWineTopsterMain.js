@@ -10,7 +10,7 @@ export const MyWineTopsterMain = ({ navigation }) => {
       <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }} />
       <ContentsView>
         <Ctitle>Step 1. Set the layout of topster.</Ctitle>
-        <CText>You can set the rows, columns (n*n) {'\n'} and background image of collage.</CText>
+        <CText>You can set the rows, columns (n*n)</CText>
       </ContentsView>
       <ContentsView>
         <Ctitle>Step 2. Make wine topster.</Ctitle>
@@ -39,7 +39,8 @@ const MainText = Styled.Text`
 `;
 
 const ContentsView = Styled.View`
-  flex: 20%;
+  display: flex;
+  margin: 10px 1px;
 `;
 
 const Ctitle = Styled.Text`

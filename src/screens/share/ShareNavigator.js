@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { ShareHome } from './ShareHome';
 import { ShareWineCellar } from './ShareWineCellar';
 import React from 'react';
-import { MyWineTopsterNavigator } from './MyWineTopsterNavigator';
+import {MyWineTopsterNavigator} from './topster/MyWineTopsterNavigator';
 
 const Stack = createStackNavigator();
 

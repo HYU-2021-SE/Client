@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {
+  Alert,
   SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  ScrollView,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useWinecellarDispatch, useWinecellarState } from '../../context/WinecellarContext';
@@ -38,6 +38,7 @@ export const MyWineCellarSetting = () => {
     };
     await winecellarApi.update({ ...dto });
     dispatch({ type: 'UPDATE_WINECELLAR', data: dto });
+    Alert.alert("Successfully updated!");
   };
 
   const onChangeColor = (color) => {

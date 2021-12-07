@@ -18,7 +18,7 @@ import { captureRef } from 'react-native-view-shot';
 import Styled from 'styled-components';
 import colors from '../../constants/colors';
 import { ScrollView } from 'react-native-gesture-handler';
-import {WinecellarHeader} from '../../components/Header';
+import { WinecellarHeader } from '../../components/Header';
 
 export const MyWineCellar = ({ navigation }) => {
   const viewRef = useRef();
