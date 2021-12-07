@@ -10,9 +10,9 @@ const Stack = createStackNavigator();
 export const LockNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="LockApp" component={LockApp} />
       <Stack.Screen name="LockInfo" component={LockInfo} />
       <Stack.Screen name="CellarLock" component={CellarLock} />
-      <Stack.Screen name="LockApp" component={LockApp} />
       <Stack.Screen name="LockGate" component={LockGate}/>
     </Stack.Navigator>
   );
