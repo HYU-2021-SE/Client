@@ -35,7 +35,7 @@ const WineLabelRegistration = ({ navigation, route }) => {
     const response = await wineApi.create({
       winecellarId: state.winecellarId,
       wineName: name,
-      location: 1,
+      location: route.params.location,
       labelImage: img,
       vintage: vintage,
       purchaseDate: purchasedDate,

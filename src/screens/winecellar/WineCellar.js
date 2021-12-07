@@ -82,7 +82,7 @@ export const MyWineCellar = ({ navigation }) => {
         <TouchableOpacity>
           <Image source={{ url: item.wine.labelImage }} style={styles.wineImage} />
         </TouchableOpacity>
-        <Text style={styles.wineName}>{item.wine.wineName}</Text>
+        <Text style={styles.wineName} numberOfLines={1} ellipsizeMode="tail">{item.wine.wineName}</Text>
       </View>
     );
   };
@@ -216,12 +216,13 @@ const styles = StyleSheet.create({
   },
   wineImage: {
     resizeMode: 'contain',
-    height: 200,
-    width: 200,
+    height: 150,
+    width: 150,
   },
   wineName: {
     fontSize: 15,
     padding: 2,
+    width: 150,
   },
   icon: {
     width: 50,
