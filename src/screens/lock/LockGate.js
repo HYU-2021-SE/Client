@@ -1,27 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Styled from 'styled-components';
-import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import {useWinecellarDispatch, useWinecellarState} from '../../context/WinecellarContext';
+import {winecellarApi} from '../../api/winecellarApi';
 
 export const LockGate = ({navigation}) => {
-  const [number, onChangeNumber] = React.useState(null);
+  const [password, setPassword] = useState('');
+  const winecellar = useWinecellarState();
+  const dispatch = useWinecellarDispatch();
+
+  const unlock = async () => {
+    if (password !== winecellar.lockPassword) {
+      Alert.alert("Password is wrong");
+      return;
+    }
+    const dto = {
+      winecellarId: winecellar.winecellarId,
+      lock: false,
+      lockPassword: winecellar.lockPassword,
+      lightColor: winecellar.lightColor,
+      nickName: winecellar.nickName,
+      humidity: winecellar.humidity,
+      temperature: winecellar.temperature,
+    };
+    await winecellarApi.update({ ...dto });
+    dispatch({ type: 'UPDATE_WINECELLAR', data: dto });
+    Alert.alert("Successfully opend!");
+    navigation.goBack();
+  }
 
   return (
     <SafeAreaView>
       <MainText> WineCellar Lock </MainText>
       <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }}/>
       <View style={{ height: 50 }}>
-        <LTitle>Enter the 6-digit password</LTitle>
+        <LTitle>Enter the password</LTitle>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeNumber}
-          value={number}
-          keyboardType="numeric"
-          secureTextEntry={true}
+          onChangeText={setPassword}
+          value={password}
+          secureTextEntry
         />
         <TouchableOpacity
           style={styles.submitButton}
-          onPress={() => navigation.navigate('CellarLock')}
+          onPress={unlock}
         >
           <Text style={styles.submitButtonText}>Enter</Text>
         </TouchableOpacity>

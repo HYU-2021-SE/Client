@@ -14,10 +14,12 @@ const LockApp = ({ navigation }) => {
           <Text>Your winecellar is locked.</Text>
           <Text>Do you want to open the winecellar?</Text>
         <ButtonBox>
-          <TouchableOpacity onPress={() => navigation.navigate("CellarLock")}>
+          <TouchableOpacity onPress={() => navigation.navigate("LockGate")}>
             <RedButton text="YES"/>
           </TouchableOpacity>
-          <RedButton text="NO"/>
+          <TouchableOpacity onPress={() => navigation.navigate("MyWineCellar Home")}>
+            <RedButton text="NO"/>
+          </TouchableOpacity>
         </ButtonBox>
       </TextBox> :
         <TextBox>
