@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Styled from 'styled-components';
-import {SafeAreaView, Text, View} from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 import { WinecellarHeader } from '../../../components/Header';
 import { useWinecellarState } from '../../../context/WinecellarContext';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { RedButton } from '../../../components/Button';
+import {captureRef} from 'react-native-view-shot';
+import Share from 'react-native-share';
 
 export const MyWineTopsterSecond = ({ route }) => {
+  const topsterRef = useRef(null);
   const state = useWinecellarState();
   const labelList = state.wines.map(wine => wine.labelImage);
   const row = route.params.row;
@@ -13,13 +17,23 @@ export const MyWineTopsterSecond = ({ route }) => {
   const width = 270 / row;
   const height = 270 / column;
 
+  const shareImages = async () => {
+    const uri = await captureRef(topsterRef, { format: 'png', quality: 0.7 });
+    Share.open({ url: uri })
+      .then((res) => console.log(res))
+      .catch();
+  };
+
   return (
     <SafeAreaView>
       <WinecellarHeader text="Share my Wine Topster" />
-      <View>
+      <TitleBox>
         <StepText>Step.2</StepText>
-      </View>
-      <ContentsView>
+        <TouchableOpacity onPress={shareImages}>
+          <RedButton text="Share" />
+        </TouchableOpacity>
+      </TitleBox>
+      <ContentsView ref={topsterRef}>
         {Array.from({ length: column }, (c, i) => i)
           .map((index) => {
             return (
@@ -43,28 +57,17 @@ export const MyWineTopsterSecond = ({ route }) => {
   );
 };
 
-const Box = Styled.View`
-  border: 1px solid;
-  width: ${props => props.width}px;
-  height: ${props => props.height}px;
-`;
-
-const Image = Styled.Image`
-  width: ${props => props.width}px;
-  height: ${props => props.height}px;
-`;
-
-const Row = Styled.View`
+const TitleBox = Styled.View`
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 270px;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 30px;
 `;
 
 const StepText = Styled.Text`
   color: #707070;
   text-align: left;
-  padding: 30px 30px 0px 30px;
   font-size: 30px;
 `;
 
@@ -75,6 +78,24 @@ const ContentsView = Styled.View`
   flex-direction: column;
   justify-content: center;
   margin: 20px auto;
+`;
+
+const Row = Styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 270px;
+`;
+
+const Box = Styled.View`
+  border: 1px solid;
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
+`;
+
+const Image = Styled.Image`
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
 `;
 
 const LabelImage = Styled.Image`
