@@ -4,6 +4,7 @@ import { MyWineCellarSetting } from './WineCellarSetting';
 import { WineInformation } from './WineInformation';
 import { createStackNavigator } from '@react-navigation/stack';
 import { WineRegistrationNavigator } from './registration/WineRegistrationNavigator';
+import Camera from '../../utils/Camera';
 
 const WineCellarStack = createStackNavigator();
 
@@ -17,6 +18,7 @@ export const WineCellarStackNavigator = () => {
         name="MyWineCellar Registration"
         component={WineRegistrationNavigator}
       />
+      <WineCellarStack.Screen name="Camera" component={Camera} />
     </WineCellarStack.Navigator>
   );
 };

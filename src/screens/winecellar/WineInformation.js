@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import colors from '../../constants/colors';
 import {wineApi} from '../../api/wineApi';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import AlertAsync from 'react-native-alert-async';
+import {imageUploadApi} from '../../api/uploadApi';
 
-export const WineInformation = ({ route }) => {
+export const WineInformation = ({ navigation, route }) => {
   const [wine, setWine] = useState(route.params.wine);
+  const [imgUrl, setImgUrl] = useState('');
 
   const fetch = async () => {
     const response = await wineApi.get(route.params.wine.wineId);
@@ -14,6 +18,50 @@ export const WineInformation = ({ route }) => {
   useEffect(() => {
     fetch();
   }, []);
+
+  const drink = async () => {
+    const drank = await AlertAsync(
+      'Did you drink the wine?',
+      '',
+      [
+        {text: 'Yes', onPress: () => true},
+        {text: 'No', onPress: () => Promise.resolve(false)},
+      ],
+      {
+        cancelable: true,
+        onDismiss: () => false,
+      },
+    );
+    if (!drank) return;
+
+    const camera = await AlertAsync(
+      'Do you want to take a cork image?',
+      '',
+      [
+        {text: 'Yes', onPress: () => true},
+        {text: 'No', onPress: () => Promise.resolve(false)},
+      ],
+      {
+        cancelable: true,
+        onDismiss: () => false,
+      },
+    );
+
+    if (!camera) return;
+
+    navigation.navigate('Camera', { onTake: onTake });
+  };
+
+  const onTake = async (value) => {
+    setImgUrl(value);
+    getCork();
+  };
+
+  const getCork = async () => {
+    const response = await imageUploadApi.upload(imgUrl);
+    const img = response.data;
+    wineApi.update(wine.wineId, img);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -79,6 +127,11 @@ export const WineInformation = ({ route }) => {
               <Text style={styles.bodyText}>Which Glass</Text>
             </View>
           </View>
+        </View>
+        <View>
+          <TouchableOpacity onPress={drink}>
+            <Text style={styles.emptyText}>Empty?</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -146,4 +199,10 @@ const styles = StyleSheet.create({
   bodyText: {
     fontSize: 20,
   },
+  emptyText: {
+    color: colors.red,
+    paddingBottom: 20,
+    paddingRight: 20,
+    textAlign: 'right',
+  }
 });
