@@ -54,11 +54,11 @@ export const WineInformation = ({ navigation, route }) => {
 
   const onTake = async (value) => {
     setImgUrl(value);
-    getCork();
+    getCork(value);
   };
 
-  const getCork = async () => {
-    const response = await imageUploadApi.upload(imgUrl);
+  const getCork = async (url) => {
+    const response = await imageUploadApi.upload(url);
     const img = response.data;
     wineApi.update(wine.wineId, img);
   };

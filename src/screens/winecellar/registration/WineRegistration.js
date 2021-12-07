@@ -10,19 +10,19 @@ const WineRegistration = ({ navigation, route }) => {
 
   const onTake = async (value) => {
     setImgUrl(value);
-    await getLabel();
+    await getLabel(value);
   };
 
-  const getLabel = async () => {
-    const response = await imageUploadApi.upload(imgUrl);
+  const getLabel = async (url) => {
+    const response = await imageUploadApi.upload(url);
     const img = response.data;
-    const labelResponse = await defineLabelApi.define(imgUrl);
+    const labelResponse = await defineLabelApi.define(url);
     const label = labelResponse.data.results[0].entities;
     goNextPage(img, label);
   };
 
   const goNextPage = (img, label) => {
-    navigation.navigate('CheckLabel', { img: img, label: label, location: route.params.floor });
+    navigation.navigate('CheckLabel', { img: img, label: label, location: route.params.location });
   };
 
   return (
