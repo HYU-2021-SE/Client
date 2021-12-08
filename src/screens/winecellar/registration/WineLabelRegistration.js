@@ -6,7 +6,7 @@ import colors from '../../../constants/colors';
 import CalendarPicker from 'react-native-calendar-picker';
 import { useWinecellarState } from '../../../context/WinecellarContext';
 import { wineApi } from '../../../api/wineApi';
-import {Button, StyleSheet } from 'react-native';
+import { Button } from 'react-native';
 
 const WineLabelRegistration = ({ navigation, route }) => {
   const img = route.params.img;
