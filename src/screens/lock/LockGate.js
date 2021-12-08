@@ -34,7 +34,7 @@ export const LockGate = ({navigation}) => {
     <SafeAreaView>
       <MainText> WineCellar Lock </MainText>
       <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }}/>
-      <View style={{ height: 50 }}>
+      <View style={{ height: 50 , top: 180, borderColor: '#707070'}}>
         <LTitle>Enter the password</LTitle>
         <TextInput
           style={styles.input}
@@ -49,6 +49,7 @@ export const LockGate = ({navigation}) => {
           <Text style={styles.submitButtonText}>Enter</Text>
         </TouchableOpacity>
       </View>
+
     </SafeAreaView>
 
   );
@@ -82,17 +83,17 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: '#707070',
     borderWidth: 1,
+    width: 200,
+    left: 60,
+    borderRadius: 20,
   },
-  submitButton: {
-    backgroundColor: '#B52E58',
-    padding: 10,
-    margin: 10,
-    height: 40,
-  },
+
   submitButtonText: {
-    color: 'white',
+    color: '#B52E58',
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 15,
+    left: 120,
+    top: -40,
   },
 });
 

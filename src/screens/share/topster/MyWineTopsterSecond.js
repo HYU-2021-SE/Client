@@ -7,6 +7,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { RedButton } from '../../../components/Button';
 import {captureRef} from 'react-native-view-shot';
 import Share from 'react-native-share';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export const MyWineTopsterSecond = ({ route }) => {
   const topsterRef = useRef(null);
@@ -30,8 +31,8 @@ export const MyWineTopsterSecond = ({ route }) => {
       <TitleBox>
         <StepText>Step.2</StepText>
         <TouchableOpacity onPress={shareImages}>
-          <RedButton text="Share" />
-        </TouchableOpacity>
+            <Ionicons name="share-social-outline" size={30} />
+          </TouchableOpacity>
       </TitleBox>
       <ContentsView ref={topsterRef}>
         {Array.from({ length: column }, (c, i) => i)
@@ -43,7 +44,8 @@ export const MyWineTopsterSecond = ({ route }) => {
                 <Box width={width} height={height}>
                   {labelList[index * row + i] ?
                     <Image width={width} height={height} source={{ url: labelList[index * row + i] }}/>
-                    : <Text>empty TT</Text>
+                    : <Text>DIOnyoS
+                    </Text>
                   }
                 </Box>
               )}

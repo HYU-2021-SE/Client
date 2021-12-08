@@ -3,10 +3,10 @@ import Styled from 'styled-components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { WinecellarHeader } from '../../../components/Header';
 import colors from '../../../constants/colors';
-import { RedButton } from '../../../components/Button';
 import CalendarPicker from 'react-native-calendar-picker';
 import { useWinecellarState } from '../../../context/WinecellarContext';
 import { wineApi } from '../../../api/wineApi';
+import {Button, StyleSheet } from 'react-native';
 
 const WineLabelRegistration = ({ navigation, route }) => {
   const img = route.params.img;
@@ -50,7 +50,7 @@ const WineLabelRegistration = ({ navigation, route }) => {
       <WinecellarHeader text="Wine Registration" />
       <Box>
         <Title>Name</Title>
-        <TextInput placeholder={name} onChangeText={onChangeName} value={name} />
+        <TextInput placeholder={ name} onChangeText={onChangeName} value={name} />
       </Box>
       <Box>
         <Title>Vintage</Title>
@@ -69,7 +69,7 @@ const WineLabelRegistration = ({ navigation, route }) => {
       </Box>
       <Box>
         <TouchableOpacity onPress={save}>
-          <RedButton text={'Save'} />
+          <Button title = "Save"/>
         </TouchableOpacity>
       </Box>
     </Container>
@@ -85,18 +85,23 @@ const Container = Styled.View`
 const Box = Styled.View`
   display: flex;
   justify-content: space-between;
+  padding: 15px;
 `;
 
 const Title = Styled.Text`
   color: ${colors.wine};
-  fontSize: 35px;
-  margin: 0 20px 20px 20px;
+  fontSize: 30px;
+  margin: 5px 20px 10px 10px;
 `;
 
 const TextInput = Styled.TextInput`
   fontSize: 18px;
   borderColor: ${colors.grey};
   borderWidth: 1px;
-  borderRadius: 10px;
-  margin: 10px;
+  borderRadius: 20px;
+  margin: 1px;
+  height: 35px;
+  width: 350px;
+  padding: 10px;
 `;
+

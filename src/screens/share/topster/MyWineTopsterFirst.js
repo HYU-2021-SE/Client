@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Styled from 'styled-components';
-import { SafeAreaView, View, Button } from 'react-native';
+import { SafeAreaView, View, Button,  } from 'react-native';
 import colors from '../../../constants/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { WinecellarHeader } from '../../../components/Header';
@@ -33,7 +33,7 @@ export const MyWineTopsterFirst = ({ navigation }) => {
       </View>
       <ContentsView>
         <SelectBox>
-          <SelectText>Rows: </SelectText>
+          <SelectText>Rows  </SelectText>
           <TouchableOpacity onPress={onDecreaseRow}>
             <MaterialCommunityIcons name={'chevron-left'} size={30} color={colors.grey} />
           </TouchableOpacity>
@@ -43,7 +43,7 @@ export const MyWineTopsterFirst = ({ navigation }) => {
           </TouchableOpacity>
         </SelectBox>
         <SelectBox>
-          <SelectText>Columns: </SelectText>
+          <SelectText>Columns  </SelectText>
           <TouchableOpacity onPress={onDecreaseColumn}>
             <MaterialCommunityIcons name={'chevron-left'} size={30} color={colors.grey} />
           </TouchableOpacity>
@@ -63,23 +63,24 @@ export const MyWineTopsterFirst = ({ navigation }) => {
 const StepText = Styled.Text`
   color: #707070;
   text-align: left;
-  padding: 30px 30px 0px 30px,
+  padding: 20px 20px 0px 20px,
   font-size: 30px;
 `;
 
 const ContentsView = Styled.View`
   display: flex;
-  height: 300;
+  height:300;
   width: 300;
   margin: 40px;
-  padding: 30px;
+  padding: 20px;
   justify-content: space-evenly
   border-color: ${colors.grey};
   border-width: 2px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+
 `;
 
 const Number = Styled.Text`

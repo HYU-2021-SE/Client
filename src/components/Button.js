@@ -13,8 +13,8 @@ export const RedButton = (props) => {
 const Btn = Styled.View`
   background-color: #a50034;
   color: #a50034;
-  padding: 8px 34px;
-  borderRadius: 34px;
+  padding: 8px 4px;
+  borderRadius: 30px;
   max-height: 100%;
 `;
 

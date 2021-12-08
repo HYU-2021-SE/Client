@@ -122,7 +122,7 @@ export const MyWineCellar = ({ navigation }) => {
                   })
                 }>
                 <AddButton>
-                  <Image style={styles.icon} source={require('../../assets/images/add.png')} />
+                  <Image style={styles.icon} source={require('../../assets/images/addwhite.png')} />
                 </AddButton>
               </TouchableOpacity>
             </View>
@@ -191,14 +191,17 @@ const styles = StyleSheet.create({
     borderColor: colors.grey,
     padding: 5,
     borderRadius: 20,
-    backgroundColor: 'white',
+
     height: 100,
   },
   wineListHeader: {
     padding: 10,
     display: 'flex',
-    flexDirection: 'row',
+    flowdirection: 'row',
     alignItems: 'center',
+    textalign: 'center',
+    fontWeight: 'bold',
+    
   },
   wineListHeaderText: {
     fontSize: 25,
@@ -218,6 +221,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     height: 150,
     width: 150,
+    borderRadius: 20,
   },
   wineName: {
     fontSize: 15,

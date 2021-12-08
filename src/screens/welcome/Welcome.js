@@ -18,9 +18,9 @@ export const WelcomeScreen = ({ navigation }) => {
   return (
     <Container>
       <TextCover>
-        <Text>my</Text>
-        <Text>smart</Text>
-        <Text>wine cellar</Text>
+        <Text>My</Text>
+        <Text>Meta</Text>
+        <Text>Wine Cellar</Text>
       </TextCover>
       <Title>DIOnysoS</Title>
       <TouchableOpacity
