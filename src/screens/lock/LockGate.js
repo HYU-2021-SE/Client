@@ -36,18 +36,17 @@ export const LockGate = ({navigation}) => {
       <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }}/>
       <View style={{ height: 50 , top: 180, borderColor: '#707070'}}>
         <LTitle>Enter the password</LTitle>
-        <TextInput
-          style={styles.input}
-          onChangeText={setPassword}
-          value={password}
-          secureTextEntry
-        />
-        <TouchableOpacity
-          style={styles.submitButton}
-          onPress={unlock}
-        >
-          <Text style={styles.submitButtonText}>Enter</Text>
-        </TouchableOpacity>
+        <ContentsView>
+          <TextInput
+            style={styles.input}
+            onChangeText={setPassword}
+            value={password}
+            secureTextEntry
+          />
+          <TouchableOpacity onPress={unlock}>
+            <Text style={styles.submitButtonText}>Enter</Text>
+          </TouchableOpacity>
+        </ContentsView>
       </View>
 
     </SafeAreaView>
@@ -70,7 +69,9 @@ const LTitle = Styled.Text`
 `;
 
 const ContentsView = Styled.View`
-  flex: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 
@@ -80,21 +81,17 @@ const styles = StyleSheet.create({
   },
   input: {
     margin: 15,
+    marginLeft: 60,
     height: 40,
     borderColor: '#707070',
     borderWidth: 1,
     width: 200,
-    left: 60,
     borderRadius: 20,
   },
 
   submitButtonText: {
     color: '#B52E58',
     textAlign: 'center',
-    fontSize: 15,
-    left: 120,
-    top: -40,
+    fontSize: 15
   },
 });
-
-export default LockGate;
