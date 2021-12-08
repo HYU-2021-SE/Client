@@ -1,6 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
-import { RedButton } from '../../../components/Button';
+import {Button} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const CheckLabel = ({ navigation, route }) => {
@@ -17,7 +17,7 @@ const CheckLabel = ({ navigation, route }) => {
       </LabelBox>
       <ButtonBox>
         <TouchableOpacity onPress={() => navigation.navigate('Registration')}>
-          <RedButton text="Try again" />
+          <Button title="Try again" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
@@ -27,7 +27,7 @@ const CheckLabel = ({ navigation, route }) => {
               location: route.params.location,
             })
           }>
-          <RedButton text="Use" />
+          <Button title="Use" />
         </TouchableOpacity>
       </ButtonBox>
     </Container>
@@ -41,7 +41,7 @@ const Container = Styled.View`
   width: 100%;
   align-items: center;
   flex: 1;
-  margin-top: 50px;
+  margin-top: 120px;
 `;
 
 const LabelBox = Styled.View`

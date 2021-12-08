@@ -40,8 +40,10 @@ const MainText = Styled.Text`
 
 const ContentsView = Styled.View`
   display: flex;
-  margin: 10px 1px;
+  margin: 8px;
+
 `;
+
 
 const Ctitle = Styled.Text`
   font-size: 25px;

@@ -1,7 +1,7 @@
 import React  from 'react';
 import { useWinecellarState } from '../../context/WinecellarContext';
 import Styled from 'styled-components';
-import { RedButton } from '../../components/Button';
+import {Button} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const LockApp = ({ navigation }) => {
@@ -15,10 +15,10 @@ const LockApp = ({ navigation }) => {
           <Text>Do you want to open the winecellar?</Text>
         <ButtonBox>
           <TouchableOpacity onPress={() => navigation.navigate("LockGate")}>
-            <RedButton text="YES"/>
+            <Button title="YES"/>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("MyWineCellar Home")}>
-            <RedButton text="NO"/>
+            <Button title="NO"/>
           </TouchableOpacity>
         </ButtonBox>
       </TextBox> :
@@ -27,10 +27,10 @@ const LockApp = ({ navigation }) => {
           <Text>Do you want to lock the winecellar?</Text>
           <ButtonBox>
             <TouchableOpacity onPress={() => navigation.navigate("CellarLock")}>
-              <RedButton text="YES"/>
+              <Button title="YES"/>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate("MyWineCellar Home")}>
-              <RedButton text="NO"/>
+              <Button title="NO"/>
             </TouchableOpacity>
           </ButtonBox>
         </TextBox>
@@ -50,6 +50,11 @@ const Container = Styled.View`
 const TextBox = Styled.View`
   margin: auto;
   align-items: center;
+  backgroundColor: #ffffff; 
+  border-radius: 20px;
+  opacity: 0.9;
+  padding: 25px;
+
 `;
 
 const Text = Styled.Text`
@@ -60,8 +65,14 @@ const Text = Styled.Text`
 const ButtonBox = Styled.View`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 90%;
   margin: auto;
   justify-content: space-evenly;
   align-items: center;
+  backgroundColor: #ffffff; 
+  border-radius: 20px;
+  opacity: 0.9;
+  padding: 10px;
+  
 `;
+

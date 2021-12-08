@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Styled from 'styled-components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Button, Text } from 'react-native';
+import { View, Button, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const WinecellarRegistration = ({ navigation }) => {
   const [serial, onChangeSerial] = useState('');
@@ -16,18 +17,19 @@ export const WinecellarRegistration = ({ navigation }) => {
   };
 
   return (
+    <SafeAreaView>
     <Container>
       <KeyboardAwareScrollView>
-        <TextCover>
           <DisplayText>{'Wine Cellar\nRegistration'}</DisplayText>
-        </TextCover>
+          <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }} />
         <SerialInputCover>
           <Text
             style={{
               textAlign: 'center',
-              margin: 'auto',
+              margin: 20,
+              alignItems: 'center',
             }}>
-            {'enter the serial number\nof your wine cellar'}
+            {'Enter the serial number\nof your wine cellar'}
           </Text>
           <InputBox>
             <TextInputCover keyboardType="default" value={serial} onChangeText={onChangeSerial} />
@@ -38,6 +40,7 @@ export const WinecellarRegistration = ({ navigation }) => {
         </SerialInputCover>
       </KeyboardAwareScrollView>
     </Container>
+    </SafeAreaView>
   );
 };
 
@@ -48,19 +51,14 @@ const Container = Styled.View`
   margin: auto;
 `;
 
-const TextCover = Styled.View`
-  flex: 1;
-  border-bottom-width: 2px;
-  border-bottom-color: black;
-  margin-top: 48px;
-`;
+
 
 const TextInputCover = Styled.TextInput`
   margin : 10px;
   border-width: 2px;
   border-radius: 34px;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   width: 200px;
 `;
 
@@ -68,13 +66,20 @@ const DisplayText = Styled.Text`
   color: #b52f59;
   font-size: 40px;
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
+  margin-top : 20px;
 `;
 
 const SerialInputCover = Styled.View`
   flex: 1;
   margin: auto;
   margin-top: 10px;
+  backgroundColor: #ffffff;
+  border-radius: 20px;
+  width: 300px;
+  height: 250px;
+  margin: 130px auto;
+  
 `;
 
 const InputBox = Styled.View`

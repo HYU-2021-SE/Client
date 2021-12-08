@@ -1,10 +1,9 @@
 import React, { useRef } from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView, View, Button } from 'react-native';
 import colors from '../../../constants/colors';
 import { WinecellarHeader } from '../../../components/Header';
 import Styled from 'styled-components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { RedButton } from '../../../components/Button';
 import { captureRef } from 'react-native-view-shot';
 import Share from 'react-native-share';
 import { useWinecellarState } from '../../../context/WinecellarContext';
@@ -50,7 +49,7 @@ const ReceiptHistory = ({ navigation }) => {
         </TagBox>
       </ReceiptContainer>
       <TouchableOpacity onPress={shareImages}>
-        <RedButton text="Share" fontSize="20px" />
+        <Button title = "Share"/>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -75,7 +74,7 @@ const ReceiptContainer = Styled.View`
   border: 1px solid;
   width: 300px;
   height: 400px;
-  margin: 10px auto 5px auto;
+  margin: 10px auto 20px auto;
   padding: 10px;
 `;
 

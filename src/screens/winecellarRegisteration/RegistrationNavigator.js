@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 
 export const RegistrationNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="WinecellarRegistration" component={WinecellarRegistration} />
       <Stack.Screen name="ValidationPage" component={ValidationPage} />
     </Stack.Navigator>

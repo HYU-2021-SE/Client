@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, Button } from 'react-native';
 import colors from '../../../constants/colors';
 import { WinecellarHeader } from '../../../components/Header';
 import Styled from 'styled-components';
@@ -7,7 +7,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useWinecellarState } from '../../../context/WinecellarContext';
 import {captureRef} from 'react-native-view-shot';
 import Share from 'react-native-share';
-import {RedButton} from '../../../components/Button';
+
 
 const CorkHistory = ({ navigation }) => {
   const corkRef = useRef(null);
@@ -40,7 +40,7 @@ const CorkHistory = ({ navigation }) => {
         </TagBox>
       </CorkContainer>
       <TouchableOpacity onPress={shareImages}>
-        <RedButton text="Share" fontSize="20px" />
+        <Button title = "Share"/>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -65,7 +65,7 @@ const CorkContainer = Styled.View`
   border: 1px solid;
   width: 300px;
   height: 400px;
-  margin: 10px auto 5px auto;
+  margin: 10px auto 20px auto;
   padding: 10px;
 `;
 
@@ -80,7 +80,7 @@ const CorkBox = Styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-content: space-evenly;
+  align-content: space-around;
   padding-right: 20px;
   width: 300px;
   height: 330px;

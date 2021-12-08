@@ -5,6 +5,8 @@ import {wineApi} from '../../api/wineApi';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import AlertAsync from 'react-native-alert-async';
 import {imageUploadApi} from '../../api/uploadApi';
+import { withTheme } from 'styled-components';
+import { color } from 'react-native-reanimated';
 
 export const WineInformation = ({ navigation, route }) => {
   const [wine, setWine] = useState(route.params.wine);
@@ -151,12 +153,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.grey,
     borderRadius: 15,
+    backgroundColor: '#ffffff',
   },
   wineImage: {
     height: 100,
     width: 100,
     resizeMode: 'contain',
     marginRight: 15,
+    borderRadius: 20,
   },
   headerTextListWrapper: {
     padding: 15,
@@ -166,6 +170,7 @@ const styles = StyleSheet.create({
     marginVertical: 2,
   },
   headerTextTitle: {
+    color: colors.wine,
     fontSize: 25,
   },
   headerText: {
@@ -178,6 +183,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginHorizontal: 15,
     marginVertical: 10,
+    backgroundColor: '#ffffff',
   },
   titleWrapper: {
     alignItems: 'flex-end',
@@ -194,6 +200,7 @@ const styles = StyleSheet.create({
     marginVertical: 2,
   },
   bodyTextTitle: {
+    color: colors.wine,
     fontSize: 25,
   },
   bodyText: {

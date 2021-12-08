@@ -46,10 +46,29 @@ const Container = Styled.View`
 `;
 
 const Image = Styled.Image`
-  width: 80;
-  height: 80;
+  width: 100;
+  height: 100;
+  margin-top: 180px;
+  right: 5;
+  bottom: 90;
+  height: 30;
+  width: 40;
+
 `;
 
 const BtnBox = Styled.View`
   margin: auto;
+  background-color: #ffffff;
+
+  borderTopLeftRadius: 20;
+  borderTopRightRadius: 20;
+  borderBottomLeftRadius: 20;
+  borderBottomRightRadius: 20;
+  justifyContent: center;
+ alignItems: center;
+ right: 5;
+  bottom: -200;
+  height: 100;
+  width: 200;
+  
 `;
