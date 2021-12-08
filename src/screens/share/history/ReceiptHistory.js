@@ -36,9 +36,12 @@ const ReceiptHistory = ({ navigation }) => {
           <Text center>My Wine History</Text>
           <Text center>***********************</Text>
           <WineList>
-            {winecellar.wines.map(wine =>
-              <Text numberOfLines={1} ellipsizeMode="tail" fontSize='18px' marginBottom='5px'>{wine.wineName}</Text>
+            {winecellar.wines.map((wine, i) =>
+              i < 5 ?
+                <Text numberOfLines={1} ellipsizeMode="tail" fontSize='18px' marginBottom='5px'>{wine.wineName}</Text>
+                : null
             )}
+            <Text center fontSize='18px'>...</Text>
           </WineList>
           <Text center>***********************</Text>
           <Text center fontSize='18px'>Total            {winecellar.wines.length}</Text>
@@ -87,7 +90,7 @@ const ReceiptBox = Styled.View`
 `;
 
 const WineList = Styled.View`
-  height: 150px;
+  height: 160px;
 `;
 
 const Text = Styled.Text`
