@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { Alert, SafeAreaView, View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import colors from '../../constants/colors';
 import {wineApi} from '../../api/wineApi';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import AlertAsync from 'react-native-alert-async';
 import {imageUploadApi} from '../../api/uploadApi';
-import { withTheme } from 'styled-components';
-import { color } from 'react-native-reanimated';
+import {useWinecellarDispatch, useWinecellarState} from '../../context/WinecellarContext';
+import {winecellarApi} from '../../api/winecellarApi';
 
 export const WineInformation = ({ navigation, route }) => {
   const [wine, setWine] = useState(route.params.wine);
   const [imgUrl, setImgUrl] = useState('');
+
+  const dispatch = useWinecellarDispatch();
+
+  const fetchWinecellar = async () => {
+    const newWinecellar = await winecellarApi.get();
+    dispatch({ type: 'GET_WINECELLAR', data: newWinecellar.data });
+  };
 
   const fetch = async () => {
     const response = await wineApi.get(route.params.wine.wineId);
@@ -56,13 +63,15 @@ export const WineInformation = ({ navigation, route }) => {
 
   const onTake = async (value) => {
     setImgUrl(value);
-    getCork(value);
+    await getCork(value);
   };
 
   const getCork = async (url) => {
     const response = await imageUploadApi.upload(url);
     const img = response.data;
-    wineApi.update(wine.wineId, img);
+    await wineApi.update(wine.wineId, img);
+    await fetchWinecellar();
+    Alert.alert("Successfully set the wine your wine history");
   };
 
   return (

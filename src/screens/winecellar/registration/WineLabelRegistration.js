@@ -4,9 +4,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { WinecellarHeader } from '../../../components/Header';
 import colors from '../../../constants/colors';
 import CalendarPicker from 'react-native-calendar-picker';
-import { useWinecellarState } from '../../../context/WinecellarContext';
+import {useWinecellarDispatch, useWinecellarState} from '../../../context/WinecellarContext';
 import { wineApi } from '../../../api/wineApi';
 import { Button } from 'react-native';
+import {winecellarApi} from '../../../api/winecellarApi';
 
 const WineLabelRegistration = ({ navigation, route }) => {
   const img = route.params.img;
@@ -18,6 +19,12 @@ const WineLabelRegistration = ({ navigation, route }) => {
   const [purchasedDate, setDate] = useState(new Date());
 
   const state = useWinecellarState();
+  const dispatch = useWinecellarDispatch();
+
+  const fetch = async () => {
+    const newWinecellar = await winecellarApi.get();
+    dispatch({ type: 'GET_WINECELLAR', data: newWinecellar.data });
+  };
 
   const onChangeName = (value) => {
     setName(value);
@@ -41,7 +48,7 @@ const WineLabelRegistration = ({ navigation, route }) => {
       purchaseDate: purchasedDate,
       producedDate: undefined,
     });
-
+    await fetch();
     navigation.navigate('MyWineCellar Home');
   };
 

@@ -2,7 +2,6 @@ import { apiRequestUrl } from '../constants/constants';
 import axios from 'axios';
 import { AsyncStorage } from 'react-native';
 import { AxiosResponse } from 'axios';
-import { useWinecellarState, Wine } from '../context/WinecellarContext';
 
 const wineInstance = axios.create({ baseURL: apiRequestUrl + '/wine' });
 
