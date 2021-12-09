@@ -2,8 +2,10 @@ import axios from 'axios';
 
 export const defineLabelApi = {
   async define(imgUrl): Promise<> {
+    if (!imgUrl) return;
     const formData = new FormData();
-    formData.append('image', { uri: imgUrl, name: 'label.jpg', type: 'image/jpg' });
+    // formData.append('image', { uri: imgUrl, name: 'label.jpg', type: 'image/jpg' });
+    formData.append('url', imgUrl);
     return axios.post('https://wine-recognition2.p.rapidapi.com/v1/results', formData, {
       headers: {
         'content-type': 'application/x-www-form-urlencoded',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Styled from 'styled-components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { SafeAreaView, View, StyleSheet, ScrollView, Alert, TextInput,} from 'react-native';
+import { SafeAreaView, View, StyleSheet, ScrollView, Alert } from 'react-native';
 import { Image } from 'react-native';
 import { WinecellarHeader } from '../../components/Header';
 import {useWinecellarDispatch, useWinecellarState} from '../../context/WinecellarContext';
@@ -145,6 +145,7 @@ const Input = Styled.TextInput`
   border: 1px solid;
   margin: 20px 10px;
   width: 170px;
+  z-index: 4;
 `;
 
 const LockButtonBox = Styled.View`

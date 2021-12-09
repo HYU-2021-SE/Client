@@ -16,7 +16,7 @@ const WineRegistration = ({ navigation, route }) => {
   const getLabel = async (url) => {
     const response = await imageUploadApi.upload(url);
     const img = response.data;
-    const labelResponse = await defineLabelApi.define(url);
+    const labelResponse = await defineLabelApi.define(img);
     const label = labelResponse.data.results[0].entities;
     goNextPage(img, label);
   };
