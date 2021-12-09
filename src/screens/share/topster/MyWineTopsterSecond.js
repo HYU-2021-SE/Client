@@ -27,7 +27,7 @@ export const MyWineTopsterSecond = ({ route }) => {
 
   return (
     <SafeAreaView>
-      <WinecellarHeader text="Share my Wine Topster" />
+      <WinecellarHeader text="Share My Wine Topster" />
       <TitleBox>
         <StepText>Step.2</StepText>
         <TouchableOpacity onPress={shareImages}>
@@ -64,7 +64,7 @@ const TitleBox = Styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  padding: 0 30px;
+  padding: 20px 30px;
 `;
 
 const StepText = Styled.Text`

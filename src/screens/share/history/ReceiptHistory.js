@@ -22,7 +22,7 @@ const ReceiptHistory = ({ navigation }) => {
 
   return (
     <SafeAreaView>
-      <WinecellarHeader text="Share my Wine History"/>
+      <WinecellarHeader text="My Wine History"/>
       <SelectorBox>
         <TouchableOpacity onPress={() => navigation.navigate("Cork")}>
           <Selector color={colors.grey}>Cork</Selector>
@@ -52,7 +52,7 @@ const ReceiptHistory = ({ navigation }) => {
         </TagBox>
       </ReceiptContainer>
       <TouchableOpacity onPress={shareImages}>
-        <Button title = "Share"/>
+        <Button title = "Share" color={'#b52f59'}/>
       </TouchableOpacity>
     </SafeAreaView>
   );

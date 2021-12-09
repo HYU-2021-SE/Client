@@ -6,10 +6,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 export const MyWineTopsterMain = ({ navigation }) => {
   return (
     <SafeAreaView>
-      <MainText> Share my Wine Topster </MainText>
+      <MainText> My Wine Topster </MainText>
       <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }} />
       <ContentsView>
-        <Ctitle>Step 1. Set the layout of topster.</Ctitle>
+        <Ctitle>Step 1.Set layout of topster.</Ctitle>
         <CText>You can set the rows, columns (n*n)</CText>
       </ContentsView>
       <ContentsView>
@@ -20,11 +20,11 @@ export const MyWineTopsterMain = ({ navigation }) => {
         </CText>
       </ContentsView>
       <ContentsView>
-        <Ctitle>Step 3. Download wine topster and Share it on social media</Ctitle>
+        <Ctitle>Step 3. Download & Share </Ctitle>
       </ContentsView>
       <ContentsView>
         <TouchableOpacity onPress={() => navigation.navigate('MyWineTopsterFirst')}>
-          <Button title="Go">Go</Button>
+          <Button title="Go" color={'#b52f59'}>Go</Button>
         </TouchableOpacity>
       </ContentsView>
     </SafeAreaView>
@@ -40,8 +40,8 @@ const MainText = Styled.Text`
 
 const ContentsView = Styled.View`
   display: flex;
-  margin: 8px;
-
+  margin: 20px;
+ 
 `;
 
 

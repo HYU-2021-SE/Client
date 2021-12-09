@@ -23,7 +23,7 @@ const CorkHistory = ({ navigation }) => {
 
   return (
     <SafeAreaView>
-      <WinecellarHeader text="Share my Wine History"/>
+      <WinecellarHeader text="My Wine History"/>
       <SelectorBox>
         <Selector color={colors.red}>Cork</Selector>
         <TouchableOpacity onPress={() => navigation.navigate("Receipt")}>
@@ -40,7 +40,7 @@ const CorkHistory = ({ navigation }) => {
         </TagBox>
       </CorkContainer>
       <TouchableOpacity onPress={shareImages}>
-        <Button title = "Share"/>
+        <Button title = "Share" color={'#b52f59'}/>
       </TouchableOpacity>
     </SafeAreaView>
   );

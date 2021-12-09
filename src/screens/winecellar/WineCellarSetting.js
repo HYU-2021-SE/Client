@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Button
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useWinecellarDispatch, useWinecellarState } from '../../context/WinecellarContext';
@@ -162,9 +163,8 @@ export const MyWineCellarSetting = () => {
         </View>
       </View>
       <TouchableOpacity onPress={update}>
-        <SettingButton>
-          <RedButton text="change" />
-        </SettingButton>
+      <Button title = "Change" color={'#b52f59'}>
+          </Button>
       </TouchableOpacity>
     </SafeAreaView>
   );

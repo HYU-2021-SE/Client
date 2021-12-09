@@ -29,7 +29,7 @@ export const WinecellarRegistration = ({ navigation }) => {
               margin: 20,
               alignItems: 'center',
             }}>
-            {'Enter the serial number\nof your wine cellar'}
+            {'Enter \nserial number of \nyour wine cellar'}
           </Text>
           <InputBox>
             <TextInputCover keyboardType="default" value={serial} onChangeText={onChangeSerial} />
@@ -55,19 +55,18 @@ const Container = Styled.View`
 
 const TextInputCover = Styled.TextInput`
   margin : 10px;
-  border-width: 2px;
-  border-radius: 34px;
+  border-width: 1px;
+  border-radius: 20px;
   text-align: center;
   font-size: 25px;
-  width: 200px;
+  width: 150px;
 `;
 
 const DisplayText = Styled.Text`
   color: #b52f59;
   font-size: 40px;
   text-align: center;
-  margin-bottom: 10px;
-  margin-top : 20px;
+  margin-top: 10px;
 `;
 
 const SerialInputCover = Styled.View`
@@ -79,6 +78,7 @@ const SerialInputCover = Styled.View`
   width: 300px;
   height: 250px;
   margin: 130px auto;
+  
   
 `;
 

@@ -34,7 +34,13 @@ export const LockGate = ({navigation}) => {
     <SafeAreaView>
       <MainText> WineCellar Lock </MainText>
       <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }}/>
-      <View style={{ height: 50 , top: 180, borderColor: '#707070'}}>
+        <View style = {{backgroundColor : 'white', borderRadius: 15,
+        top: 150, width: 350, height: 180,
+        marginLeft: 20,
+      shadowColor: '#000',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.4,
+    shadowRadius: 2,}}>
         <LTitle>Enter the password</LTitle>
         <ContentsView>
           <TextInput
@@ -47,8 +53,7 @@ export const LockGate = ({navigation}) => {
             <Text style={styles.submitButtonText}>Enter</Text>
           </TouchableOpacity>
         </ContentsView>
-      </View>
-
+        </View>
     </SafeAreaView>
 
   );
@@ -59,6 +64,7 @@ const MainText = Styled.Text`
   text-align: center;
   justifyContent: center;
   color: #B52E58;
+  padding-top: 20px;
 `;
 
 const LTitle = Styled.Text`
@@ -66,6 +72,8 @@ const LTitle = Styled.Text`
   text-align: center;
   justifyContent: center;
   color: '#707070';
+  padding-bottom: 10px;
+  padding-top: 30px;
 `;
 
 const ContentsView = Styled.View`
@@ -86,12 +94,13 @@ const styles = StyleSheet.create({
     borderColor: '#707070',
     borderWidth: 1,
     width: 200,
-    borderRadius: 20,
+    borderRadius: 15,
+    backgroundColor: 'white',
   },
 
   submitButtonText: {
     color: '#B52E58',
     textAlign: 'center',
-    fontSize: 15
+    fontSize: 20,
   },
 });

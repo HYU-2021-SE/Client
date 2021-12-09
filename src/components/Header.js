@@ -7,7 +7,7 @@ export const WinecellarHeader = (props) => {
   return (
     <Container>
       <Text>{props.text}</Text>
-      {underBar ? <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 20 }} /> : null}
+      {underBar ? <View style={{ borderBottomColor: '#707070', borderBottomWidth: 1, margin: 10 }} /> : null}
     </Container>
   );
 };
@@ -23,4 +23,5 @@ const Text = Styled.Text`
   font-size: 40px;
   text-align: center;
   line-height: 40px;
+  padding: 10px;
 `;

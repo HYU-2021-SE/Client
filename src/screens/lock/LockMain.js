@@ -15,10 +15,10 @@ const LockApp = ({ navigation }) => {
           <Text>Do you want to open the winecellar?</Text>
         <ButtonBox>
           <TouchableOpacity onPress={() => navigation.navigate("LockGate")}>
-            <Button title="YES"/>
+            <Button title="YES" color={'#b52f59'}></Button>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("MyWineCellar Home")}>
-            <Button title="NO"/>
+            <Button title="NO" color={'#b52f59'}></Button>
           </TouchableOpacity>
         </ButtonBox>
       </TextBox> :
@@ -27,10 +27,10 @@ const LockApp = ({ navigation }) => {
           <Text>Do you want to lock the winecellar?</Text>
           <ButtonBox>
             <TouchableOpacity onPress={() => navigation.navigate("CellarLock")}>
-              <Button title="YES"/>
+              <Button title="YES" color={'#b52f59'}/>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate("MyWineCellar Home")}>
-              <Button title="NO"/>
+              <Button title="NO" color={'#b52f59'}/>
             </TouchableOpacity>
           </ButtonBox>
         </TextBox>
@@ -54,7 +54,6 @@ const TextBox = Styled.View`
   border-radius: 20px;
   opacity: 0.9;
   padding: 25px;
-
 `;
 
 const Text = Styled.Text`
@@ -72,7 +71,7 @@ const ButtonBox = Styled.View`
   backgroundColor: #ffffff; 
   border-radius: 20px;
   opacity: 0.9;
-  padding: 10px;
+  padding: 5px;
   
 `;
 

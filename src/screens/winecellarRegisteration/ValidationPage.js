@@ -31,33 +31,33 @@ export const ValidationPage = ({ route, navigation }) => {
     <Container>
       <KeyboardAwareScrollView>
         <TextCover>
-          <DisplayText>{'Wine Cellar\nWinecellarRegistration'}</DisplayText>
+          <DisplayText>{'Winecellar\nRegistration'}</DisplayText>
         </TextCover>
         <SerialConfirmCover>
           <Text
             style={{
               textAlign: 'center',
-              margin: 'auto',
+              margin: 20,
             }}>
-            {'Please check\nYour Information'}
+            {'Check Your Information'}
           </Text>
           <ConfirmCover>
-            <ConfirmTextCover>Serial Number:</ConfirmTextCover>
+            <ConfirmTextCover>Serial Number</ConfirmTextCover>
             <Text
               style={{
                 textAlign: 'center',
                 margin: 'auto',
-              }}>
+              }}> {'\n'}
               {serialNo}
             </Text>
           </ConfirmCover>
           <ConfirmCover>
-            <ConfirmTextCover>Model Name:</ConfirmTextCover>
+            <ConfirmTextCover>Model Name</ConfirmTextCover>
             <Text
               style={{
                 textAlign: 'center',
                 margin: 'auto',
-              }}>
+              }}>{'\n'}
               {modelNo}
             </Text>
           </ConfirmCover>
@@ -79,7 +79,7 @@ const Container = Styled.View`
   height : 100%;
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: 10px;
 `;
 
 const DisplayText = Styled.Text`
@@ -87,13 +87,14 @@ const DisplayText = Styled.Text`
   font-size: 40px;
   text-align: center;
   margin-bottom: 24px;
+  padding: 10px;
 `;
 
 const TextCover = Styled.View`
   flex: 1;
-  border-bottom-width: 2px;
+  border-bottom-width: 1px;
   border-bottom-color: black;
-  margin-top: 48px;
+  margin-top: 40px;
 `;
 
 const SerialConfirmCover = Styled.View`
@@ -105,13 +106,18 @@ const SerialConfirmCover = Styled.View`
 const ConfirmCover = Styled.View`
   flex: 1;
   margin-top: 48px;
+  backgroundColor: #ffffff;
+  width: 330;
+  height: 150;
+  borderRadius: 15;
 `;
 
 const ConfirmTextCover = Styled.Text`
   font-size : 33px;
   font-weight: bold;
   text-align : center; 
-  margin-bottom: 20px;
+
+  margin-top: 20px;
 `;
 
 const ButtonContainer = Styled.View`

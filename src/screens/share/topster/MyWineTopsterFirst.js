@@ -54,7 +54,7 @@ export const MyWineTopsterFirst = ({ navigation }) => {
         </SelectBox>
       </ContentsView>
       <TouchableOpacity onPress={() => navigation.navigate('MyWineTopsterSecond', { row, column })}>
-        <Button title="Go">Go</Button>
+        <Button title="Go" color={'#b52f59'}>Go</Button>
       </TouchableOpacity>
     </SafeAreaView>
   );
