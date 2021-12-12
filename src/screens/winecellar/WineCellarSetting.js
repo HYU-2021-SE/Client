@@ -5,17 +5,16 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
   Button
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useWinecellarDispatch, useWinecellarState } from '../../context/WinecellarContext';
-import { RedButton } from '../../components/Button';
 import Styled from 'styled-components';
 import { winecellarApi } from '../../api/winecellarApi';
 import colors from '../../constants/colors';
 import { Picker } from '@react-native-picker/picker';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const MyWineCellarSetting = () => {
   const state = useWinecellarState();
@@ -163,8 +162,7 @@ export const MyWineCellarSetting = () => {
         </View>
       </View>
       <TouchableOpacity onPress={update}>
-      <Button title = "Change" color={'#b52f59'}>
-          </Button>
+        <Button title="Change" color={'#b52f59'} />
       </TouchableOpacity>
     </SafeAreaView>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   Image,
+  ImageBackground,
   Linking,
   Platform,
   SafeAreaView,
@@ -109,45 +110,53 @@ export const MyWineCellar = ({ navigation }) => {
       </View>
 
       {/* 와인 선반 */}
+      <ImageBackground style={styles.image} source={require('../../assets/images/winecellar.png')}>
       <View style={styles.wineListWrapper}>
-        {Array.from({ length: floor }, (v, i) => i).map((index) => (
-          <View key={index} contentContainerStyle={styles.wineList}>
-            <View style={styles.wineListHeader}>
-              <Text style={styles.wineListHeaderText}>Floor {index + 1}</Text>
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('MyWineCellar Registration', {
-                    screen: 'Registration',
-                    params: { location: index + 1 },
-                  })
-                }>
-                <AddButton>
-                  <Image style={styles.icon} source={require('../../assets/images/addwhite.png')} />
-                </AddButton>
-              </TouchableOpacity>
+
+          {Array.from({ length: floor }, (v, i) => i).map((index) => (
+            <View key={index} contentContainerStyle={styles.wineList}>
+              <View style={styles.wineListHeader}>
+                <Text style={styles.wineListHeaderText}>Floor {index + 1}</Text>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('MyWineCellar Registration', {
+                      screen: 'Registration',
+                      params: { location: index + 1 },
+                    })
+                  }>
+                  <AddButton>
+                    <Image style={styles.icon} source={require('../../assets/images/addwhite.png')} />
+                  </AddButton>
+                </TouchableOpacity>
+              </View>
+              <ScrollView style={styles.scrollView} horizontal={true}>
+                {winecellar.wines
+                  ? winecellar.wines
+                    .filter((wine) => wine.location === index + 1)
+                    .map((w) => (
+                      <View key={w.wineId}>
+                        <TouchableOpacity
+                          onPress={() => {
+                            navigation.navigate('Wine Information', {
+                              image: w.labelImage,
+                              wine: w
+                            });
+                          }}>
+                          <RenderWineImage wine={w} />
+                        </TouchableOpacity>
+                      </View>
+                    ))
+                  : null}
+                {winecellar.wines.filter((wine) => wine.location === index + 1).length < 3 ?
+                  <View style={styles.emptyWine}>
+                    <Image style={styles.empty} source={require('../../assets/images/dios.png')} />
+                  </View> : null
+                }
+              </ScrollView>
             </View>
-            <ScrollView style={styles.scrollView} horizontal={true}>
-              {winecellar.wines
-                ? winecellar.wines
-                  .filter((wine) => wine.location === index + 1)
-                  .map((w) => (
-                    <View key={w.wineId}>
-                      <TouchableOpacity
-                        onPress={() => {
-                          navigation.navigate('Wine Information', {
-                            image: w.labelImage,
-                            wine: w
-                          });
-                        }}>
-                        <RenderWineImage wine={w} />
-                      </TouchableOpacity>
-                    </View>
-                  ))
-                : null}
-            </ScrollView>
-          </View>
-        ))}
+          ))}
       </View>
+        </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -155,6 +164,8 @@ export const MyWineCellar = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    display: 'flex',
+    height: '100%',
   },
   header: {
     display: 'flex',
@@ -184,6 +195,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'column',
   },
+  image: {
+    display: 'flex',
+    height: 700,
+  },
   wineList: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -191,7 +206,6 @@ const styles = StyleSheet.create({
     borderColor: colors.grey,
     padding: 5,
     borderRadius: 20,
-
     height: 100,
   },
   wineListHeader: {
@@ -201,10 +215,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textalign: 'center',
     fontWeight: 'bold',
-    
+
   },
   wineListHeaderText: {
     fontSize: 25,
+    color: '#ffffff',
     fontWeight: '300',
   },
   wineWrapper: {
@@ -212,25 +227,44 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderBottomColor: colors.grey,
     borderBottomWidth: 1,
-  },
-  wineBox: {
     display: 'flex',
-    flexDirection: 'row',
+    alignItems: 'center',
   },
   wineImage: {
     resizeMode: 'contain',
-    height: 150,
-    width: 150,
+    height: 120,
+    width: 90,
     borderRadius: 20,
+    alignItems: 'center',
   },
   wineName: {
     fontSize: 15,
     padding: 2,
-    width: 150,
+    width: 105,
+    color: '#ffffff',
+    textAlign: 'center',
+  },
+  emptyWine: {
+    display: 'flex',
+    backgroundColor: 'beige',
+    width: 100,
+    height: 150,
+    borderRadius: 30,
+    opacity: 0.4,
+    marginLeft: 10,
+  },
+  empty: {
+    marginTop: 50,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: 90,
+    height: 30,
   },
   icon: {
     width: 50,
     height: 50,
+    backgroundColor: colors.red,
+    borderRadius: 50,
   },
 });
 
